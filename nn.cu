@@ -2,29 +2,36 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
-#include <time.h>
+//#include <time.h>
 
 #include "utils.c"
 #include "parallel.cu"
 
-#ifdef __APPLE__
-    #include <unistd.h>
-#else _WIN32
-    #include <windows.h>
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
 #endif
+
+
+//#ifdef __APPLE__
+//    #include <unistd.h>
+//#else _WIN32
+//    #include <windows.h>
+//#endif
 
 typedef struct {
     int n_inputs;
     int n_hidden;
     int n_outputs;
-    
+
     float *out_input;
     float *out_hidden;
     float *out_output;
 
     float *changes_input_hidden;
     float *changes_hidden_output;
-    
+
     float *w_input_hidden;
     float *w_hidden_output;
 } NeuralNet;
@@ -65,11 +72,11 @@ NeuralNet buildNeuralNet(int n_inputs, int n_outputs, int n_hidden) {
     buildLayer(out_input, n_inputs + 1, 1.0f);
     buildLayer(out_hidden, n_hidden, 1.0f);
     buildLayer(out_output, n_outputs, 1.0f);
-    
+
     // Build changes layer
     float *changes_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden, 0.0f);
     float *changes_hidden_output = buildWeightsLayer(n_hidden, n_outputs, 0.0f);
-    
+
     // Build weight matrix
     float *w_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden, -1.0f);
     float *w_hidden_output = buildWeightsLayer(n_hidden, n_outputs, -1.0f);
@@ -128,14 +135,14 @@ float back_propagate_network(Pattern p, NeuralNet n) {
     float *output_delta = (float*)malloc(sizeof(float) * n.n_outputs);
     float *hidden_delta = (float*)malloc(sizeof(float) * n.n_hidden);
 
-    
+
     // Calculate output delta
     for (i=0; i < n.n_outputs; i++) {
         float error = p.result[i] - n.out_output[i];
         output_delta[i] = dsigmoid(n.out_output[i]) * error;
     }
-    
-    
+
+
     // Calculate hidden delta
     for(i=0; i < n.n_hidden; i++) {
         float error = 0.0f;
@@ -152,21 +159,21 @@ float back_propagate_network(Pattern p, NeuralNet n) {
         drawMatrix(n.w_hidden_output, n.n_outputs, n.n_hidden);
         _sleep(1);
     }
-   
+
     setWeightsForLayers(n.w_input_hidden, n.changes_input_hidden, hidden_delta, n.out_input, n.n_inputs, n.n_hidden);
     if (DEBUG) {
         printf("\nInput-Hidden weights\n");
         drawMatrix(n.w_input_hidden, n.n_hidden, n.n_inputs);
         _sleep(1);
     }
-   
+
     // Calculate error
     float error = 0.0f;
     for (i=0; i < n.n_outputs; i++) {
         error = error + 0.5f * pow(p.result[i] - n.out_output[i], 2);
     }
     if (DEBUG) {
-        printf("\n ***** Error for this pattern is: %f *****\n", error); 
+        printf("\n ***** Error for this pattern is: %f *****\n", error);
         _sleep(2);
     }
     return error;
@@ -200,14 +207,14 @@ Pattern makePatternSingleOutput(int *data, int result) {
 
 int main() {
     srand((unsigned)time(NULL));
-    
+
     int n_inputs = 2;
     int n_hidden = 4;
     int n_outputs = 1;
-    
+
     // Build output layer
     NeuralNet nn = buildNeuralNet(n_inputs, n_outputs, n_hidden);
-    
+
     // Build training samples
     int _p1[] = {0,0};
     Pattern p1 = makePatternSingleOutput(_p1, 0);
@@ -217,9 +224,9 @@ int main() {
     Pattern p3 = makePatternSingleOutput(_p3, 1);
     int _p4[] = {1,0};
     Pattern p4 = makePatternSingleOutput(_p4, 1);
-    
+
     Pattern patterns[] = {p3, p2, p1, p4};
-    
+
     // Train the network
     train_network(patterns, 4, 1000, nn);
 

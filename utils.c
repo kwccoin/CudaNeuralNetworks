@@ -1,9 +1,18 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+// see http://stackoverflow.com/questions/14818084/what-is-the-proper-include-for-the-function-sleep-in-c
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <time.h>
 
 #define WARP_SIZE 16
 #define DEBUG false
+
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+
 
 /* ---------------- [[HELPER FUNCTIONS FOR GLOBAL MEMORY]] ---------------- */
 
@@ -49,11 +58,19 @@ dim3 getGridBasedOnBlockSize(int width, int height, int block_size) {
 /* ---------------- [[HELPER FUNCTIONS FOR DEBUGGING]] ---------------- */
 
 void _sleep(int n) {
-    #ifdef __APPLE__
+
+  //sleep:
+  #ifdef _WIN32
+  Sleep(n);
+  #else
+  usleep(n*1000);  /* sleep for 100 milliSeconds */
+  #endif
+  
+    //#ifdef __APPLE__
         //sleep(n);
-    #else _WIN32
+    //#else _WIN32
         //sleep(n * 1000);
-    #endif
+    //#endif
 }
 
 void drawMatrix(float *m, int width, int height) {
