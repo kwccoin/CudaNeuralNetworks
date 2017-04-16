@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 #define WARP_SIZE 16
 #define DEBUG false
 
@@ -17,7 +21,7 @@ float *_copyDeviceHost(float *src, int src_size, float *dst=NULL) {
     } else {
         target = dst;
     }
-    
+
     cudaMemcpy(target, src, sizeof(float) * src_size, cudaMemcpyDeviceToHost);
     return target;
 }
@@ -46,9 +50,9 @@ dim3 getGridBasedOnBlockSize(int width, int height, int block_size) {
 
 void _sleep(int n) {
     #ifdef __APPLE__
-        sleep(n);
+        //sleep(n);
     #else _WIN32
-        Sleep(n * 1000);
+        //sleep(n * 1000);
     #endif
 }
 
