@@ -5,7 +5,14 @@
 //#include <time.h>
 
 #define WARP_SIZE 16
+//#define DEBUG false
+//#define DEBUG true
+
+// use this and then if there is -DDEBUG it would be set but if not then it is false!
+
+#ifndef DEBUG
 #define DEBUG false
+#endif
 
 #ifdef _WIN32
 #include <Windows.h>
