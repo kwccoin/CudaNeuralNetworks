@@ -10,6 +10,10 @@
 #define DEBUG false
 #endif
 
+#ifndef DEBUGP
+#define DEBUGP false
+#endif
+
 
 /* ---------------- [[CUDA KERNELS]] ---------------- */
 
@@ -119,13 +123,13 @@ void update_layer(float *src_layer, float *dst_layer, int src_n, int dst_n, floa
     dim3 grid(gridX, gridY);
 
     // RUN RUN RUN!
-    if (DEBUG) {
+    if (DEBUGP) {
         printf("\n par-1-123 ***** Updating layer *****\n");
 
-        printf("\n par-2-125 From\n");
+        printf("\n par-2-125 From drawMatrix(src_layer, src_n, 1\n");
         drawMatrix(src_layer, src_n, 1);
 
-        printf("\nT par-3-128 o\n");
+        printf("\nT par-3-128 o drawMatrix(weights, dst_n, src_n)\n");
         drawMatrix(weights, dst_n, src_n);
     }
     mapStepCUDA<<<grid, block>>>(src_layer_d, weights_d, buffer_d, dst_n, src_n);
@@ -159,8 +163,8 @@ void update_layer(float *src_layer, float *dst_layer, int src_n, int dst_n, floa
         dst_layer[i] = tanh(dst_layer[i]);
     }
 
-    if (DEBUG) {
-        printf("\n par-4-163 Result is\n");
+    if (DEBUGP) {
+        printf("\n par-4-163 Result is drawMatrix(dst_layer, dst_n, 1) \n");
         drawMatrix(dst_layer, dst_n, 1);
         printf("\n par-5-165 ***** ENDED UPDATING LAYER *****\n");
         _sleep(1);
