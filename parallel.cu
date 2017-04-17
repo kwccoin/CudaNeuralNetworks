@@ -120,12 +120,12 @@ void update_layer(float *src_layer, float *dst_layer, int src_n, int dst_n, floa
 
     // RUN RUN RUN!
     if (DEBUG) {
-        printf("\n***** Updating layer *****\n");
+        printf("\n par-1-123 ***** Updating layer *****\n");
 
-        printf("\nFrom\n");
+        printf("\n par-2-125 From\n");
         drawMatrix(src_layer, src_n, 1);
 
-        printf("\nTo\n");
+        printf("\nT par-3-128 o\n");
         drawMatrix(weights, dst_n, src_n);
     }
     mapStepCUDA<<<grid, block>>>(src_layer_d, weights_d, buffer_d, dst_n, src_n);
@@ -160,9 +160,9 @@ void update_layer(float *src_layer, float *dst_layer, int src_n, int dst_n, floa
     }
 
     if (DEBUG) {
-        printf("\nResult is\n");
+        printf("\n par-4-163 Result is\n");
         drawMatrix(dst_layer, dst_n, 1);
-        printf("\n***** ENDED UPDATING LAYER *****\n");
+        printf("\n par-5-165 ***** ENDED UPDATING LAYER *****\n");
         _sleep(1);
     }
 }

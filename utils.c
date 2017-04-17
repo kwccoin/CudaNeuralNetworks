@@ -83,7 +83,7 @@ void _sleep(int n) {
 void drawMatrix(float *m, int width, int height) {
     for (int i=0; i < height; i++) {
         for (int j=0; j < width; j++) {
-            printf("%f ", m[i * width + j]);
+            printf("u-1-86 %f ", m[i * width + j]);
         }
         printf("\n");
     }
