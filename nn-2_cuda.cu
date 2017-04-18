@@ -21,7 +21,7 @@ __global__ void updateWeights_CUDA(float *weights, float *changes, float *delta_
         int idx = width * gd.y + gd.x;
         float change = delta_outputs[gd.x] * inputs[gd.y];
         
-        weights[idx] += 0.5 * change + 0.5 * changes[idx];
+        weights[idx] += 0.5 * change + 0.5 * changes[idx]; // 0.5 is magic no. use two 1.0 instead
         changes[idx] = change;
     }
 
@@ -157,7 +157,7 @@ void update_layer_CUDA(float *src_layer, float *dst_layer, int src_n, int dst_n,
 
     dst_layer =_copyDeviceHost_CUDA(currentTarget, dst_n, dst_layer);
     for (int i=0; i < dst_n; i++) {
-        dst_layer[i] = tanh(dst_layer[i]);
+        dst_layer[i] = sigmoid(dst_layer[i]); // tanh(dst_layer[i]);  // just apply tanh???
     }
 
     if (DEBUGP) {

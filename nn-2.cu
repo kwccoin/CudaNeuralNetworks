@@ -122,27 +122,61 @@ NeuralNet buildNeuralNet(int n_inputs, int n_outputs, int n_hidden) {
 
     // Build changes layer ? not sure what is this
     
-    float *changes_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden, 0.0f);
+    float *changes_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden + 1, 0.0f);
     float *changes_hidden_output = buildWeightsLayer(n_hidden + 1, n_outputs, 0.0f);
 
     // Build weight matrix
     
-    float *w_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden,  -1.0f); // random
-    float *w_hidden_output = buildWeightsLayer(n_hidden + 1, n_outputs,  -1.0f); // random)
+    float *w_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden + 1,  0.0f); // -1.0f random
+    float *w_hidden_output = buildWeightsLayer(n_hidden + 1, n_outputs,  0.0f); // -1.0f random)
+
+	/*	
+
+	w_input_hidden[0] = 0.15;
+	w_input_hidden[1] = 0.25;
+	w_input_hidden[2] = 0.35;
+	w_input_hidden[3] = 0.20;
+	w_input_hidden[4] = 0.30;
+	w_input_hidden[5] = 0.35;
+	w_input_hidden[6] = 0.00;
+	w_input_hidden[7] = 0.00;
+	w_input_hidden[8] = 0.00;
+	
+	w_hidden_output[0] = .40;
+	w_hidden_output[1] = .50; 
+	w_hidden_output[2] = .60;
+	w_hidden_output[3] = .45; 
+	w_hidden_output[4] = .55;
+	w_hidden_output[5] = .60;
+	w_hidden_output[3] = .00; 
+	w_hidden_output[4] = .00;
+	w_hidden_output[5] = .00;
+
+	*/
+
+	/* this is closer actually */
 
 	w_input_hidden[0] = 0.15;
 	w_input_hidden[1] = 0.20;
-	w_input_hidden[2] = 0.35;
+	w_input_hidden[2] = 0.00;
 	w_input_hidden[3] = 0.25;
 	w_input_hidden[4] = 0.30;
-	w_input_hidden[5] = 0.35;
+	w_input_hidden[5] = 0.00;
+	w_input_hidden[6] = 0.35;
+	w_input_hidden[7] = 0.35;
+	w_input_hidden[8] = 0.00;
 	
-	w_hidden_output[0] = .40;
-	w_hidden_output[1] = .45; 
-	w_hidden_output[2] = .60;
-	w_hidden_output[3] = .40; 
-	w_hidden_output[4] = .55;
-	w_hidden_output[5] = .60;
+	w_hidden_output[0] = 0.40;
+	w_hidden_output[1] = 0.45; 
+	w_hidden_output[2] = 0.00;
+	w_hidden_output[3] = 0.50; 
+	w_hidden_output[4] = 0.55;
+	w_hidden_output[5] = 0.00;
+	w_hidden_output[6] = 0.60; 
+	w_hidden_output[7] = 0.60;
+	w_hidden_output[8] = 0.00;
+
+	
 
     NeuralNet nn;
 
@@ -163,9 +197,12 @@ NeuralNet buildNeuralNet(int n_inputs, int n_outputs, int n_hidden) {
     return nn;
 }
 
-float dsigmoid(float y) {
-    return 1.0 - pow(y,2.0f);
-}
+
+
+/*
+float dsigmoid(float y) {        // ??? what is this ??
+    return 1.0 - pow(y,2.0f);    // not dsigmoid and not dtanh ... 
+} */
 
 void print_nn(NeuralNet nn){
 	printf("\n--nn start seems input +/-1 is for bias but only for input strangely --\n");
@@ -208,7 +245,7 @@ void print_nn(NeuralNet nn){
 void update_patternf(Patternf patternf, NeuralNet nn) {
 
     if (DEBUG | DEBUG2c) {
-        printf("\n DEBUG2-a ***** LAYER UPDATE *****\n");
+        printf("\n DEBUG2-a ***** before input 2 hidden LAYER UPDATE *****\n");
         print_nn(nn);
     }
 
@@ -222,13 +259,27 @@ void update_patternf(Patternf patternf, NeuralNet nn) {
     // Run parallel update and amend to use cuda 
     
     update_layer_CUDA(nn.out_input,  nn.out_hidden, nn.n_inputs, nn.n_hidden,  nn.w_input_hidden);
+
+    if (DEBUG | DEBUG2c) {
+        printf("\n DEBUG2-b ----- after input 2 hidden and before setting hidden bias to 1--- \n");
+        print_nn(nn);        
+    }
+    
     
     nn.out_hidden[nn.n_hidden -1] = 1.00; // bias ??? very important as normal processing all hidden neuron would be updated even bias node
+
+    if (DEBUG | DEBUG2c) {
+        printf("\n DEBUG2-b ===== after hidden bias to 1 --- \n");
+        print_nn(nn);        
+    }
+    
+    // ?? problem here we have the hidden bias weights but not the receiving got applied 
     
     update_layer_CUDA(nn.out_hidden, nn.out_output, nn.n_hidden, nn.n_outputs, nn.w_hidden_output);
 
-    if (DEBUG | DEBUG2) {
-        printf("\n DEBUG2-b ***** END LAYER UPDATE *****\n");
+    if (DEBUG | DEBUG2c) {
+        printf("\n DEBUG2-b ~~~~~ after hidden 2 output END LAYER UPDATE *****\n");
+        print_nn(nn);        
     }
 }
 
@@ -238,6 +289,7 @@ float back_propagate_network(Patternf p, NeuralNet n) {
 
     if (DEBUG | DEBUG2c) {
         printf("\n DEBUG2-c ***** BACK PROPAGATE *****\n");
+        print_nn(n);
     }
 
     int i, j;
@@ -283,6 +335,7 @@ float back_propagate_network(Patternf p, NeuralNet n) {
     }
     if (DEBUG | DEBUG2c) {
         printf("\n DEBUG2-f ***** Error for this patternf is: %f *****\n", error);
+        print_nn(n);
         _sleep(2); // why need to sleep ?
     }
     return error;
@@ -430,6 +483,12 @@ int main (int argc, char *argv[]) {
     */
     
     cudaDeviceReset();
+    
+    printf("\n--- outh1 ---should be 0.59326992: %f\n", sigmoid(0.3775));
+    printf("\n--- outo1 ---should be 0.75136507: %f\n", sigmoid(1.105905967));
+    
+    printf("\n--- neto1 ?? ---should be 0.186815602: %f\n", dsigmoid(1.105905967));
+    
     
     return 0;
 }

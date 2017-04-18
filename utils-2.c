@@ -3,7 +3,7 @@
 //#include <stdio.h>
 //#include <stdlib.h>
 //#include <time.h>
-
+#include <math.h>
 #include "nn-2.h"
 
 // should be 2 as cuda from non_cuda one
@@ -34,4 +34,18 @@ void drawMatrix(float *m, int width, int height) {
         }
         printf("\n");
     }
+}
+
+float sigmoid(float z) {
+ return 1.0/(1.0+exp(-z));
+}
+
+float dsigmoid(float z) {
+	float sigmoidz;
+	sigmoidz = sigmoid(z);
+	return sigmoidz*(1.0f - sigmoidz);
+}
+
+float dtanh(float z) {
+ return 1.0f - pow(tanh(z), 2.0f);
 }
