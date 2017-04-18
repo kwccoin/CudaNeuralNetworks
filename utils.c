@@ -14,6 +14,11 @@
 #define DEBUG false
 #endif
 
+#ifndef DEBUGU
+#define DEBUGU false
+#endif
+
+
 #ifdef _WIN32
 #include <Windows.h>
 #else

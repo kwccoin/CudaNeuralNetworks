@@ -19,14 +19,17 @@
 #define DEBUG false
 #endif
 
+#ifndef DEBUG2
+#define DEBUG2 false
+#endif
+
+
 //#ifdef __APPLE__
 //    #include <unistd.h>
 //#else _WIN32
 //    #include <windows.h>
 //#endif
 
-// shall use -DDEBUG and #ifdef DEBUG ... but not
-//#define DEBUG true
 
 typedef struct 
 
@@ -90,15 +93,15 @@ float* buildWeightsLayer(int outer_n, int inner_n, float seed) {
 
 NeuralNet buildNeuralNet(int n_inputs, int n_outputs, int n_hidden) {
 
-    float *out_input = (float *)malloc(sizeof(float) * (n_inputs + 1));
-    float *out_hidden = (float *)malloc(sizeof(float) * n_hidden);
+    float *out_input = (float *)malloc(sizeof(float) * (n_inputs + 1)); // got 1 extra ? got bias
+    float *out_hidden = (float *)malloc(sizeof(float) * n_hidden); // not got any extra ? no bias
     float *out_output = (float *)malloc(sizeof(float) * n_outputs);
 
     buildLayer(out_input, n_inputs + 1, 1.0f);
     buildLayer(out_hidden, n_hidden, 1.0f);
     buildLayer(out_output, n_outputs, 1.0f);
 
-    // Build changes layer
+    // Build changes layer ? not sure what is this
     float *changes_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden, 0.0f);
     float *changes_hidden_output = buildWeightsLayer(n_hidden, n_outputs, 0.0f);
 
@@ -131,7 +134,7 @@ float dsigmoid(float y) {
 
 void update_pattern(Pattern pattern, NeuralNet nn) {
 
-    if (DEBUG) {
+    if (DEBUG2) {
         printf("\n nn-1-118 ***** LAYER UPDATE *****\n");
     }
 
@@ -145,14 +148,14 @@ void update_pattern(Pattern pattern, NeuralNet nn) {
     update_layer(nn.out_input, nn.out_hidden, nn.n_inputs, nn.n_hidden, nn.w_input_hidden);
     update_layer(nn.out_hidden, nn.out_output, nn.n_hidden, nn.n_outputs, nn.w_hidden_output);
 
-    if (DEBUG) {
+    if (DEBUG2) {
         printf("\n nn-2-132 ***** END LAYER UPDATE *****\n");
     }
 }
 
 float back_propagate_network(Pattern p, NeuralNet n) {
 
-    if (DEBUG) {
+    if (DEBUG2) {
         printf("\n nn-3-139 ***** BACK PROPAGATE *****\n");
     }
 
@@ -179,17 +182,17 @@ float back_propagate_network(Pattern p, NeuralNet n) {
 
     // Set hidden-output weights
     setWeightsForLayers(n.w_hidden_output, n.changes_hidden_output, output_delta, n.out_hidden, n.n_hidden, n.n_outputs);
-    if (DEBUG) {
+    if (DEBUG2) {
         printf("\n nn-4-166 Hidden-Output weights\n");
         drawMatrix(n.w_hidden_output, n.n_outputs, n.n_hidden);
-        _sleep(1);
+        _sleep(1);  // why need to sleep ?
     }
 
     setWeightsForLayers(n.w_input_hidden, n.changes_input_hidden, hidden_delta, n.out_input, n.n_inputs, n.n_hidden);
-    if (DEBUG) {
+    if (DEBUG2) {
         printf("\n nn-5-173 Input-Hidden weights\n");
         drawMatrix(n.w_input_hidden, n.n_hidden, n.n_inputs);
-        _sleep(1);
+        _sleep(1);  // why need to sleep ?
     }
 
     // Calculate error
@@ -197,9 +200,9 @@ float back_propagate_network(Pattern p, NeuralNet n) {
     for (i=0; i < n.n_outputs; i++) {
         error = error + 0.5f * pow(p.result[i] - n.out_output[i], 2);
     }
-    if (DEBUG) {
+    if (DEBUG2) {
         printf("\n nn-6-184 ***** Error for this pattern is: %f *****\n", error);
-        _sleep(2);
+        _sleep(2); // why need to sleep ?
     }
     return error;
 }
@@ -215,7 +218,7 @@ void train_network(Pattern *patterns, int n_patterns, int n_iterations, NeuralNe
     }
     if (i % 10 == 0) {
        printf("nn-7-200 Error is: %-.5f\n", error);
-       if (DEBUG) _sleep(2);
+       if (DEBUG2) _sleep(2);
     }
   }
 }
@@ -237,11 +240,18 @@ int main() {
     srand((unsigned)time(NULL));
 
     int n_inputs = 2;
-    int n_hidden = 4;
     int n_outputs = 1;
-
+	int n_hidden = 4;
+	
+	// assume 2 input neuron, 4 hidden neuron and 1 output neuron with bais
+	
+	// 00b -3x5-> xxxxb -5x1-> 1
+	// 01b -3x5-> xxxxb -5x1-> 0
+	// 10b -3x5-> xxxxb -5x1-> 1
+	// 11b -3x5-> xxxxb -5x1-> 0
+    
     // Build output layer
-    NeuralNet nn = buildNeuralNet(n_inputs, n_outputs, n_hidden);
+    NeuralNet nn = buildNeuralNet(n_inputs, n_outputs, n_hidden); 
 
     // Build training samples
     int _p1[] = {0,0};
@@ -253,15 +263,27 @@ int main() {
     int _p4[] = {1,0};
     Pattern p4 = makePatternSingleOutput(_p4, 0);
 
-    Pattern patterns[] = {p3, p2, p1, p4};
+    Pattern patterns[] = {p1, p2, p3, p4}; // use 1,2,3,4 instead of 3,2,1,4 ...?
 
     // Train the network
-    train_network(patterns, 4, 1000, nn);
+    train_network(patterns, 4, 1000, nn);  // 4 patterns and run run 1000 times
 
-    printf("\n\n nn-9-244 Testing the network\n");
-    update_pattern(p2, nn);
+    printf("\n\n nn-9-251 Testing the network\n"); // ?? why only update p2 ... (0 1) -> 0 
+    update_pattern(p1, nn);  // ?? p2 ... (0 0) -> 1
     for (int i=0; i < nn.n_outputs; i++) {
-        printf(" nn-10-247 Output: %f, expected: %i\n", nn.out_output[i], p2.result[i]);
+        printf(" ------------- nn-10-254 Output: %f, expected 1 index: %i\n", nn.out_output[i], p2.result[i]);
+    }
+    update_pattern(p2, nn);  // ?? p2 ... (0 1) -> 0
+    for (int i=0; i < nn.n_outputs; i++) {
+        printf(" ------------- nn-10-258 Output: %f, expected 0 index: %i\n", nn.out_output[i], p2.result[i]);
+    }
+    update_pattern(p3, nn);  // ?? p2 ... (1 1) -> 1
+    for (int i=0; i < nn.n_outputs; i++) {
+        printf(" ------------- nn-10-262 Output: %f, expected 1 index: %i\n", nn.out_output[i], p2.result[i]);
+    }
+    update_pattern(p4, nn);  // ?? p2 ... (1 0) -> 0
+    for (int i=0; i < nn.n_outputs; i++) {
+        printf(" ------------- nn-10-266 Output: %f, expected 0 index: %i\n", nn.out_output[i], p2.result[i]);
     }
     cudaDeviceReset();
     return 0;
