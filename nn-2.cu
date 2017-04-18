@@ -68,13 +68,13 @@ float* buildWeightsLayer(int outer_n, int inner_n, float seed) {
 
     int total = outer_n * inner_n;
     float *w = (float *)malloc(sizeof(float) * total);
-    for(int i=0; i < total; i++) {
-        if (seed == -1) {
-          w[i] = ((float)rand()/(float)RAND_MAX);
-        } else {
-          w[i] = seed;
-        }
-    }
+	for(int i=0; i < total; i++) {
+		if (seed == -1.00) { // not -1 ??
+		  w[i] = ((float)rand()/(float)RAND_MAX);
+		} else {
+		  w[i] = seed;
+		}
+	}
     return w;
 }
 
@@ -120,14 +120,27 @@ NeuralNet buildNeuralNet(int n_inputs, int n_outputs, int n_hidden) {
     buildLayer(out_output, n_outputs, 1.0f);
 
     // Build changes layer ? not sure what is this
-    float *changes_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden, 0.0f);
     
+    float *changes_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden, 0.0f);
     float *changes_hidden_output = buildWeightsLayer(n_hidden, n_outputs, 0.0f);
 
     // Build weight matrix
-    float *w_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden, -1.0f);
     
-    float *w_hidden_output = buildWeightsLayer(n_hidden, n_outputs, -1.0f);
+    float *w_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden,  -1.0f); // random
+    float *w_hidden_output = buildWeightsLayer(n_hidden, n_outputs,  -1.0f); // random)
+
+	w_input_hidden[0] = 0.15;
+	w_input_hidden[1] = 0.20;
+	w_input_hidden[2] = 0.35;
+	w_input_hidden[3] = 0.25;
+	w_input_hidden[4] = 0.30;
+	w_input_hidden[5] = 0.35;
+	
+	w_hidden_output[0] = .40;
+	w_hidden_output[1] = .45; // missing 0.60 no bias
+	w_hidden_output[2] = .50;
+	w_hidden_output[3] = .55; // missing 0.60 no bias
+
 
     NeuralNet nn;
 
@@ -156,29 +169,32 @@ void print_nn(NeuralNet nn){
 	printf("\n--nn start seems input +/-1 is for bias but only for input strangely --\n");
 	
 	int i; 
-	printf("\n nn.n_inputs and plus 1: %d, %d",    nn.n_inputs, nn.n_inputs+1);
+	printf("\n nn.n_inputs already plus 1: %d",    nn.n_inputs);
 	printf("\n nn.n_hidden:            %d",    nn.n_hidden);
 	printf("\n nn.n_outputs:           %d\n\n",nn.n_outputs);
 
-	for(i=0; i < (nn.n_inputs+1); i++)                {printf(" nn.out_input[%d]: %f\n",             i, nn.out_input[i]);};
-	for(i=0; i < (nn.n_hidden); i++)                  {printf(" nn.out_hidden[%d]: %f\n",            i, nn.out_hidden[i]);};
-	for(i=0; i < (nn.n_outputs); i++)                 {printf(" nn.out_output[%d]: %f\n",            i, nn.out_output[i]);};
+	// no nn.n_inputs + 1
+	for(i=0; i < (nn.n_inputs); i++)                {printf(" nn.out_input[%d]: %f\n",             i, nn.out_input[i]);};
+	for(i=0; i < (nn.n_hidden); i++)                {printf(" nn.out_hidden[%d]: %f\n",            i, nn.out_hidden[i]);};
+	for(i=0; i < (nn.n_outputs); i++)               {printf(" nn.out_output[%d]: %f\n",            i, nn.out_output[i]);};
 	printf("\n");
 
-	for(i=0; i < ((nn.n_inputs+1)*nn.n_hidden); i++)  {printf(" nn.changes_input_hidden[%d]: %f\n",  i, nn.changes_input_hidden[i]);};
+	// no nn.n_inputs + 1
+	for(i=0; i < ((nn.n_inputs)  *nn.n_hidden); i++)  {printf(" nn.changes_input_hidden[%d]: %f\n",  i, nn.changes_input_hidden[i]);};
 	for(i=0; i < ((nn.n_hidden)  *nn.n_outputs); i++) {printf(" nn.changes_hidden_output[%d]: %f\n", i, nn.changes_hidden_output[i]);};
 	printf("\n");
 
-	drawMatrix(nn.changes_input_hidden,  nn.n_inputs+1, nn.n_hidden);
+	drawMatrix(nn.changes_input_hidden,  nn.n_inputs, nn.n_hidden);
 	printf("\n");
 	drawMatrix(nn.changes_hidden_output, nn.n_hidden,   nn.n_outputs);
 	printf("\n");
 
-	for(i=0; i < ((nn.n_inputs+1)*nn.n_hidden); i++)  {printf(" nn.w_input_hidden[%d]: %f\n",        i, nn.w_input_hidden[i]);};
+    // no nn.n_inputs + 1
+	for(i=0; i < ((nn.n_inputs)  *nn.n_hidden); i++)  {printf(" nn.w_input_hidden[%d]: %f\n",        i, nn.w_input_hidden[i]);};
 	for(i=0; i < ((nn.n_hidden)  *nn.n_outputs); i++) {printf(" nn.w_hidden_output[%d]: %f\n",       i, nn.w_hidden_output[i]);};
     printf("\n");
 	
-	drawMatrix(nn.w_input_hidden,  nn.n_inputs+1, nn.n_hidden);
+	drawMatrix(nn.w_input_hidden,  nn.n_inputs, nn.n_hidden);
 	printf("\n");
 	drawMatrix(nn.w_hidden_output, nn.n_hidden,   nn.n_outputs);
 	printf("\n");
@@ -310,14 +326,23 @@ void printPatternf(Patternf p){
 	for(i=0; i < (NO_OUTPUT_NEURON); i++) {printf(" no:%d p.result:%f", i,p.result[i]);};
 }
 
-int main() {
+int main (int argc, char *argv[]) {
+
+	/* http://www.thegeekstuff.com/2013/01/c-argc-argv/ */
+
+	/* Conversion string into int */
+	int noOfRun;
+	if (argc > 1)
+		{noOfRun = atoi(argv[1]);
+		printf("\nargv[1] in intger=%d\n\n",noOfRun);}
+
 
 	printf("nn-2 253 ------------------ main() starting -------------------------------n");
 
     srand((unsigned)time(NULL));
 
     int n_inputs  = NO_INPUT_NEURON;   //2;  // shall use configuration ... ???
-    int n_outputs = NO_OUTPUT_NEURON;  //1;
+    int n_outputs = NO_OUTPUT_NEURON;  //1 -> 2;
 	int n_hidden  = NO_HIDDEN_NEURON;  //4 -> 2;
 	
 	// assume 2 input neuron, 4 hidden neuron and 1 output neuron with bais
@@ -364,11 +389,11 @@ int main() {
 	for(i=0; i < (leng_patternf); i++) 
 		{printf(" patternfs[%d]: ", i); 
 		 printPatternf(patternfs[i]);}
-	printf("\n ========= No of run           : %d\n",  NO_OF_RUN); 
+	printf("\n ========= No of run           : %d\n",  noOfRun); //NO_OF_RUN); 
 	
     // Train the network
-    train_network(patternfs, leng_patternf, NO_OF_RUN, nn);  
-    	// 4 patterns  which is now calculated and run run 1000 times which now is NO_OF_RUN
+    train_network(patternfs, leng_patternf, noOfRun, nn); // NO_OF_RUN, nn);  
+    	// 4 patterns  which is now calculated and run run 1000 times which now is NO_OF_RUN => noOfRun
     	// 4 and 2 meant 8 run e.g. 8 back prop ... 
 
 	// Test the network (shall use different data but here it would be the same as it is logic)
