@@ -4,10 +4,13 @@
 //#include <stdlib.h>
 //#include <time.h>
 
-#define WARP_SIZE 16
+//# include "nn-2_cuda.h"
+
+
+//#define WARP_SIZE 16
 //#define DEBUG false
 //#define DEBUG true
-
+/*
 // use this and then if there is -DDEBUG it would be set but if not then it is false!
 
 #ifndef DEBUG
@@ -24,6 +27,7 @@
 #else
 #include <unistd.h>
 #endif
+*/
 
 // should be 2 as cuda from non_cuda one
 
@@ -55,14 +59,14 @@ typedef struct {
     int y;
 } GlobalDim;
 
-__device__ GlobalDim getGlobalDim(dim3 blockDim, dim3 blockIdx, dim3 threadIdx) {
+__device__ GlobalDim getGlobalDim_CUDA(dim3 blockDim, dim3 blockIdx, dim3 threadIdx) {
     GlobalDim gd;
     gd.x = blockDim.x * blockIdx.x + threadIdx.x;
     gd.y = blockDim.y * blockIdx.y + threadIdx.y;
     return gd;
 }
 
-dim3 getGridBasedOnBlockSize(int width, int height, int block_size) {
+dim3 getGridBasedOnBlockSize_CUDA(int width, int height, int block_size) {
     int gridX = (int)ceil((float)width / block_size);
     int gridY = (int)ceil((float)height / block_size);
     return dim3(gridX, gridY);

@@ -5,18 +5,14 @@
 //#include <time.h>
 
 #include "nn-2.h"
+#include "nn-2_cuda.cu"
 
-#include "utils-2.c"
-#include "utilise-2_cuda.c"
-#include "nn-2_cuda.c"
+// note cannot include one more time utils-2.c
 
-//#include "utilise.c"
-//#include "parallel.cu"
-
-typedef struct 
-
-    // weights init and bias is an issues
-
+typedef struct {
+ 
+ 	// weights init and bias is an issues
+ 
     int n_inputs;
     int n_hidden;
     int n_outputs;
@@ -33,9 +29,6 @@ typedef struct
 } NeuralNet;
 
 typedef struct {
-
-    // not sure understand this
-
     int *result;
     int *data;
 } Pattern;
@@ -151,16 +144,39 @@ float dsigmoid(float y) {
     return 1.0 - pow(y,2.0f);
 }
 
+void print_nn(NeuralNet nn){
+	printf("\n--nn start seems input +/-1 is for bias but only for input strangely --\n");
+	
+	int i; 
+	
+	for(i=0; i < (nn.n_inputs+1); i++)                {printf(" nn.out_input[%d]: %f\n",             i, nn.out_input[i]);};
+	for(i=0; i < (nn.n_hidden); i++)                  {printf(" nn.out_hidden[%d]: %f\n",            i, nn.out_hidden[i]);};
+	for(i=0; i < (nn.n_outputs); i++)                 {printf(" nn.out_output[%d]: %f\n",            i, nn.out_output[i]);};
+	printf("\n");
+
+	for(i=0; i < ((nn.n_inputs+1)*nn.n_hidden); i++)  {printf(" nn.changes_input_hidden[%d]: %f\n",  i, nn.changes_input_hidden[i]);};
+	for(i=0; i < ((nn.n_hidden)  *nn.n_outputs); i++) {printf(" nn.changes_hidden_output[%d]: %f\n", i, nn.changes_hidden_output[i]);};
+	printf("\n");
+
+	for(i=0; i < ((nn.n_inputs+1)*nn.n_hidden); i++)  {printf(" nn.w_input_hidden[%d]: %f\n",        i, nn.w_input_hidden[i]);};
+	for(i=0; i < ((nn.n_hidden)  *nn.n_outputs); i++) {printf(" nn.w_hidden_output[%d]: %f\n",       i, nn.w_hidden_output[i]);};
+    printf("\n");
+		
+	printf("\n--nn end   --\n");
+	
+}
+
 void update_pattern(Pattern pattern, NeuralNet nn) {
 
-    if (DEBUG2) {
-        printf("\n nn-1-118 ***** LAYER UPDATE *****\n");
+    if (DEBUG | DEBUG2c) {
+        printf("\n DEBUG2-a ***** LAYER UPDATE *****\n");
+        print_nn(nn);
     }
 
     // Write inputs // mixing all 3 togethers
     int i;
-    for(i=0; i < nn.n_inputs -1; i++) {
-        nn.out_input[i] = pattern.data[i];
+    for(i=0; i < (nn.n_inputs -1); i++) {        // -1 here ... why??
+        nn.out_input[i] = pattern.data[i];     // why pattern.data[i] here ??? here it will store of these data in out_input[i]
     }
 
     // Run parallel update and amend to use cuda 
@@ -168,8 +184,8 @@ void update_pattern(Pattern pattern, NeuralNet nn) {
     
     update_layer_CUDA(nn.out_hidden, nn.out_output, nn.n_hidden, nn.n_outputs, nn.w_hidden_output);
 
-    if (DEBUG2) {
-        printf("\n nn-2-132 ***** END LAYER UPDATE *****\n");
+    if (DEBUG | DEBUG2) {
+        printf("\n DEBUG2-b ***** END LAYER UPDATE *****\n");
     }
 }
 
@@ -177,8 +193,8 @@ float back_propagate_network(Pattern p, NeuralNet n) {
 
     // no parallel? No cuda?? Why not all in cuda once built???
 
-    if (DEBUG2) {
-        printf("\n nn-3-139 ***** BACK PROPAGATE *****\n");
+    if (DEBUG | DEBUG2c) {
+        printf("\n DEBUG2-c ***** BACK PROPAGATE *****\n");
     }
 
     int i, j;
@@ -203,16 +219,16 @@ float back_propagate_network(Pattern p, NeuralNet n) {
     }
 
     // Set hidden-output weights
-    setWeightsForLayers(n.w_hidden_output, n.changes_hidden_output, output_delta, n.out_hidden, n.n_hidden, n.n_outputs);
-    if (DEBUG2) {
-        printf("\n nn-4-166 Hidden-Output weights\n");
+    setWeightsForLayers_CUDA(n.w_hidden_output, n.changes_hidden_output, output_delta, n.out_hidden, n.n_hidden, n.n_outputs);
+    if (DEBUG | DEBUG2c) {
+        printf("\n DEBUG2-d Hidden-Output weights\n");
         drawMatrix(n.w_hidden_output, n.n_outputs, n.n_hidden);
         _sleep(1);  // why need to sleep ?
     }
 
-    setWeightsForLayers(n.w_input_hidden, n.changes_input_hidden, hidden_delta, n.out_input, n.n_inputs, n.n_hidden);
-    if (DEBUG2) {
-        printf("\n nn-5-173 Input-Hidden weights\n");
+    setWeightsForLayers_CUDA(n.w_input_hidden, n.changes_input_hidden, hidden_delta, n.out_input, n.n_inputs, n.n_hidden);
+    if (DEBUG | DEBUG2c) {
+        printf("\n DEBUG2-e Input-Hidden weights\n");
         drawMatrix(n.w_input_hidden, n.n_hidden, n.n_inputs);
         _sleep(1);  // why need to sleep ?
     }
@@ -222,8 +238,8 @@ float back_propagate_network(Pattern p, NeuralNet n) {
     for (i=0; i < n.n_outputs; i++) {
         error = error + 0.5f * pow(p.result[i] - n.out_output[i], 2);
     }
-    if (DEBUG2) {
-        printf("\n nn-6-184 ***** Error for this pattern is: %f *****\n", error);
+    if (DEBUG | DEBUG2c) {
+        printf("\n DEBUG2-f ***** Error for this pattern is: %f *****\n", error);
         _sleep(2); // why need to sleep ?
     }
     return error;
@@ -238,9 +254,9 @@ void train_network(Pattern *patterns, int n_patterns, int n_iterations, NeuralNe
        update_pattern(patterns[j], nn);
        error += back_propagate_network(patterns[j], nn);
     }
-    if (i % 10 == 0) {
-       printf("nn-7-200 Error is: %-.5f\n", error);
-       if (DEBUG2) _sleep(2);
+    if (i % 10 == 0 | i < 10) {
+       printf("nn-2-235 Error for iter %d is: %-.5f\n", i, error);
+       if (DEBUG | DEBUG2) _sleep(2);  // why need sleep ???
     }
   }
 }
@@ -257,13 +273,13 @@ Pattern makePatternSingleOutput(int *data, int result) {
 
 int main() {
 
-	printf("nn-8 218 ------------------ starting -------------------------------n");
+	printf("nn-2 253 ------------------ main() starting -------------------------------n");
 
     srand((unsigned)time(NULL));
 
-    int n_inputs = 2;
-    int n_outputs = 1;
-	int n_hidden = 4;
+    int n_inputs  = NO_INPUT_NEURON;   //2;  // shall use configuration ... ???
+    int n_outputs = NO_OUTPUT_NEURON;  //1;
+	int n_hidden  = NO_HIDDEN_NEURON;  //4 -> 2;
 	
 	// assume 2 input neuron, 4 hidden neuron and 1 output neuron with bais
 	
@@ -275,9 +291,9 @@ int main() {
     // Build output layer
     NeuralNet nn = buildNeuralNet(n_inputs, n_outputs, n_hidden); 
 
-    // Build training samples
+    // Build training samples - real life shall use file ... 
     int _p1[] = {0,0};
-    Pattern p1 = makePatternSingleOutput(_p1, 1);
+    Pattern p1 = makePatternSingleOutput(_p1, 1); // memory issues and cannot use ({0,0}, 1) ?
     int _p2[] = {0,1};
     Pattern p2 = makePatternSingleOutput(_p2, 0);
     int _p3[] = {1,1};
@@ -285,28 +301,47 @@ int main() {
     int _p4[] = {1,0};
     Pattern p4 = makePatternSingleOutput(_p4, 0);
 
+	
     Pattern patterns[] = {p1, p2, p3, p4}; // use 1,2,3,4 instead of 3,2,1,4 ...?
 
-    // Train the network
-    train_network(patterns, 4, 1000, nn);  // 4 patterns and run run 1000 times
+	// printf(" ========= length of patterns[]: %lu\n", sizeof(patterns) / sizeof(patterns[0])); 
+			// only in compile time i and i is int, f is floating, need lu or unsigned long 
 
-    printf("\n\n nn-9-251 Testing the network\n"); // ?? why only update p2 ... (0 1) -> 0 
+	int leng_pattern = (int) (sizeof(patterns) / sizeof(patterns[0]));
+
+	printf("\n ========= length of patterns[]: %d\n", leng_pattern); 
+	printf("\n ========= No of run           : %d\n", NO_OF_RUN); 
+	
+    // Train the network
+    train_network(patterns, leng_pattern, NO_OF_RUN, nn);  
+    	// 4 patterns  which is now calculated and run run 1000 times which now is NO_OF_RUN
+    	// 4 and 2 meant 8 run e.g. 8 back prop ... 
+
+	// Test the network (shall use different data but here it would be the same as it is logic)
+	
+    printf("\n\n nn-2-295 Testing the network mixing the build, validation and test idea due the data's nature\n"); 
+    	// update pattern probably not train it I guess ?? 
+    
     update_pattern(p1, nn);  // ?? p2 ... (0 0) -> 1
     for (int i=0; i < nn.n_outputs; i++) {
-        printf(" ------------- nn-10-254 Output: %f, expected 1 index: %i\n", nn.out_output[i], p2.result[i]);
+        printf(" ------------- pattern 001: nn.out_output[i]: %f, p2.result[i]: %i\n", nn.out_output[i], p2.result[i]);
     }
+    
     update_pattern(p2, nn);  // ?? p2 ... (0 1) -> 0
     for (int i=0; i < nn.n_outputs; i++) {
-        printf(" ------------- nn-10-258 Output: %f, expected 0 index: %i\n", nn.out_output[i], p2.result[i]);
+        printf(" ------------- pattern 010: nn.out_output[i]: %f, p2.result[i]: %i\n", nn.out_output[i], p2.result[i]);
     }
+    
     update_pattern(p3, nn);  // ?? p2 ... (1 1) -> 1
     for (int i=0; i < nn.n_outputs; i++) {
-        printf(" ------------- nn-10-262 Output: %f, expected 1 index: %i\n", nn.out_output[i], p2.result[i]);
+        printf(" ------------- pattern 111: nn.out_output[i]: %f, p2.result[i]: %i\n", nn.out_output[i], p2.result[i]);
     }
+    
     update_pattern(p4, nn);  // ?? p2 ... (1 0) -> 0
     for (int i=0; i < nn.n_outputs; i++) {
-        printf(" ------------- nn-10-266 Output: %f, expected 0 index: %i\n", nn.out_output[i], p2.result[i]);
+        printf(" ------------- pattern 100: nn.out_output[i]: %f, p2.result[i]: %i\n", nn.out_output[i], p2.result[i]);
     }
+    
     cudaDeviceReset();
     return 0;
 }

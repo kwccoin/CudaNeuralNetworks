@@ -1,12 +1,23 @@
 #include <math.h>
 
-#include "nn-2_cuda.h"
-#include "nn-2.h"
+#define WARP_SIZE 16
+//#define DEBUG false
+//#define DEBUG true
+
+// use this and then if there is -DDEBUG it would be set but if not then it is false!
+
+#ifndef DEBUG
+#define DEBUG false
+#endif
+
+#ifndef DEBUGP
+#define DEBUGP false
+#endif
 
 
 /* ---------------- [[CUDA KERNELS]] ---------------- */
 
-__global__ void updateWeights_CUDA(float *weights, float *changes, float *delta_outputs, float *inputs, int n_inputs, int n_outputs) {
+__global__ void updateWeightsCUDA(float *weights, float *changes, float *delta_outputs, float *inputs, int n_inputs, int n_outputs) {
     int width = n_outputs;
     int height = n_inputs;
     GlobalDim gd = getGlobalDim(blockDim, blockIdx, threadIdx);
@@ -21,7 +32,7 @@ __global__ void updateWeights_CUDA(float *weights, float *changes, float *delta_
 
 }
 
-__global__ void mapStep_CUDA(float *inputs, float *matrix, float *buffer, int width, int height) {
+__global__ void mapStepCUDA(float *inputs, float *matrix, float *buffer, int width, int height) {
     GlobalDim gd = getGlobalDim(blockDim, blockIdx, threadIdx);
 
     if ((gd.x < width) && (gd.y < height)) {
@@ -30,7 +41,7 @@ __global__ void mapStep_CUDA(float *inputs, float *matrix, float *buffer, int wi
     }
 }
 
-__global__ void reduceStep_CUDA(float *input, float *output, int width, int height) {
+__global__ void reduceStepCUDA(float *input, float *output, int width, int height) {
 
     __shared__ float sharedMemory[WARP_SIZE * WARP_SIZE];
 
@@ -74,7 +85,7 @@ __global__ void reduceStep_CUDA(float *input, float *output, int width, int heig
 
 /* ---------------- [[LAUNCH FUNCTIONS]] ---------------- */
 
-void setWeightsForLayers_CUDA(float *weights, float *changes, float *delta_outputs, float *inputs, int n_inputs, int n_outputs) {
+void setWeightsForLayers(float *weights, float *changes, float *delta_outputs, float *inputs, int n_inputs, int n_outputs) {
 
     // Copy to device memory
     int grid_size = n_inputs * n_outputs;
@@ -91,21 +102,21 @@ void setWeightsForLayers_CUDA(float *weights, float *changes, float *delta_outpu
     updateWeightsCUDA<<<grid, block>>>(weights_d, changes_d, delta_outputs_d, inputs_d, n_inputs, n_outputs);
 
     // Copy back weights and momenutm
-    weights = _copyDeviceHost_CUDA(weights_d, grid_size, weights);
-    changes = _copyDeviceHost_CUDA(changes_d, grid_size, changes);
+    weights = _copyDeviceHost(weights_d, grid_size, weights);
+    changes = _copyDeviceHost(changes_d, grid_size, changes);
 }
 
 // at least consistent with Cuda ending
 
-void update_layer_CUDA(float *src_layer, float *dst_layer, int src_n, int dst_n, float *weights) {
+void update_layer(float *src_layer, float *dst_layer, int src_n, int dst_n, float *weights) {
     dim3 block(WARP_SIZE, WARP_SIZE);
 
     float *src_layer_d, *weights_d, *buffer_d;
     int total = src_n * dst_n;
  
     // Allocate input in global memory
-    src_layer_d = _copyHostDevice_CUDA(src_layer, src_n);
-    weights_d = _copyHostDevice_CUDA(weights, total);
+    src_layer_d = _copyHostDevice(src_layer, src_n);
+    weights_d = _copyHostDevice(weights, total);
     cudaMalloc((void**)&buffer_d, sizeof(float) * total);
  
     // Create block dimensions and run parallel update layer
@@ -123,7 +134,7 @@ void update_layer_CUDA(float *src_layer, float *dst_layer, int src_n, int dst_n,
         printf("\nT par-3-128 o drawMatrix(weights, dst_n, src_n)\n");
         drawMatrix(weights, dst_n, src_n);
     }
-    mapStep_CUDA<<<grid, block>>>(src_layer_d, weights_d, buffer_d, dst_n, src_n);
+    mapStepCUDA<<<grid, block>>>(src_layer_d, weights_d, buffer_d, dst_n, src_n);
 
     // Set the current target to the input
     float *currentTarget = buffer_d;
@@ -141,7 +152,7 @@ void update_layer_CUDA(float *src_layer, float *dst_layer, int src_n, int dst_n,
         cudaMalloc((void**)&buffer_d, sizeof(float) * (dst_n * gridY));
  
         // RUN RUN RUN!
-        reduceStep_CUDA<<<grid, block>>>(currentTarget, buffer_d, dst_n, currentHeight);
+        reduceStepCUDA<<<grid, block>>>(currentTarget, buffer_d, dst_n, currentHeight);
 
         // Free old memory and keep track of the new one
         cudaFree(currentTarget);
@@ -149,7 +160,7 @@ void update_layer_CUDA(float *src_layer, float *dst_layer, int src_n, int dst_n,
         currentTarget = buffer_d;
     }
 
-    dst_layer =_copyDeviceHost_CUDA(currentTarget, dst_n, dst_layer);
+    dst_layer =_copyDeviceHost(currentTarget, dst_n, dst_layer);
     for (int i=0; i < dst_n; i++) {
         dst_layer[i] = tanh(dst_layer[i]);
     }
