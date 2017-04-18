@@ -28,7 +28,10 @@
 // shall use -DDEBUG and #ifdef DEBUG ... but not
 //#define DEBUG true
 
-typedef struct {
+typedef struct 
+
+    // weights init and bias is an issues
+
     int n_inputs;
     int n_hidden;
     int n_outputs;
@@ -45,6 +48,9 @@ typedef struct {
 } NeuralNet;
 
 typedef struct {
+
+    // not sure understand this
+
     int *result;
     int *data;
 } Pattern;
@@ -52,6 +58,10 @@ typedef struct {
 void buildLayer(float *arr, int n, float initial) {
     int i=0;
     while(i < n){
+    
+        // why change array convention
+        // can use arr[] 
+        
         *arr = initial;
         arr++;
         i++;
@@ -59,6 +69,13 @@ void buildLayer(float *arr, int n, float initial) {
 }
 
 float* buildWeightsLayer(int outer_n, int inner_n, float seed) {
+
+     // no bias
+     // no allowance of different weights
+     //    But if allow defeat the init purpose
+     // it should be a 2 dim array
+     // weights[inner_layer+1 outer layer] with bias
+
     int total = outer_n * inner_n;
     float *w = (float *)malloc(sizeof(float) * total);
     for(int i=0; i < total; i++) {
