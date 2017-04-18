@@ -112,6 +112,9 @@ NeuralNet buildNeuralNet(int n_inputs, int n_outputs, int n_hidden) {
     // output
     //.              - error calc (or in pattern)
     
+    // here it use the idea of out_ but need bac
+    //.    And also input just has out no bwd
+    
     // per each pattern p as expected_output[p]
     
     // batch
@@ -140,6 +143,7 @@ NeuralNet buildNeuralNet(int n_inputs, int n_outputs, int n_hidden) {
 
     // Build weight matrix
     float *w_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden, -1.0f);
+    
     float *w_hidden_output = buildWeightsLayer(n_hidden, n_outputs, -1.0f);
 
     NeuralNet nn;
@@ -171,7 +175,7 @@ void update_pattern(Pattern pattern, NeuralNet nn) {
         printf("\n nn-1-118 ***** LAYER UPDATE *****\n");
     }
 
-    // Write inputs
+    // Write inputs // mixing all 3 togethers
     int i;
     for(i=0; i < nn.n_inputs -1; i++) {
         nn.out_input[i] = pattern.data[i];
@@ -179,6 +183,7 @@ void update_pattern(Pattern pattern, NeuralNet nn) {
 
     // Run parallel update
     update_layer(nn.out_input, nn.out_hidden, nn.n_inputs, nn.n_hidden, nn.w_input_hidden);
+    
     update_layer(nn.out_hidden, nn.out_output, nn.n_hidden, nn.n_outputs, nn.w_hidden_output);
 
     if (DEBUG2) {
