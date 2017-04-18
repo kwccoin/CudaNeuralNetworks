@@ -91,8 +91,8 @@ void setWeightsForLayers_CUDA(float *weights, float *changes, float *delta_outpu
     updateWeightsCUDA<<<grid, block>>>(weights_d, changes_d, delta_outputs_d, inputs_d, n_inputs, n_outputs);
 
     // Copy back weights and momenutm
-    weights = _copyDeviceHost(weights_d, grid_size, weights);
-    changes = _copyDeviceHost(changes_d, grid_size, changes);
+    weights = _copyDeviceHost_CUDA(weights_d, grid_size, weights);
+    changes = _copyDeviceHost_CUDA(changes_d, grid_size, changes);
 }
 
 // at least consistent with Cuda ending
@@ -104,8 +104,8 @@ void update_layer_CUDA(float *src_layer, float *dst_layer, int src_n, int dst_n,
     int total = src_n * dst_n;
  
     // Allocate input in global memory
-    src_layer_d = _copyHostDevice(src_layer, src_n);
-    weights_d = _copyHostDevice(weights, total);
+    src_layer_d = _copyHostDevice_CUDA(src_layer, src_n);
+    weights_d = _copyHostDevice_CUDA(weights, total);
     cudaMalloc((void**)&buffer_d, sizeof(float) * total);
  
     // Create block dimensions and run parallel update layer
@@ -123,7 +123,7 @@ void update_layer_CUDA(float *src_layer, float *dst_layer, int src_n, int dst_n,
         printf("\nT par-3-128 o drawMatrix(weights, dst_n, src_n)\n");
         drawMatrix(weights, dst_n, src_n);
     }
-    mapStepCUDA<<<grid, block>>>(src_layer_d, weights_d, buffer_d, dst_n, src_n);
+    mapStep_CUDA<<<grid, block>>>(src_layer_d, weights_d, buffer_d, dst_n, src_n);
 
     // Set the current target to the input
     float *currentTarget = buffer_d;
@@ -149,7 +149,7 @@ void update_layer_CUDA(float *src_layer, float *dst_layer, int src_n, int dst_n,
         currentTarget = buffer_d;
     }
 
-    dst_layer =_copyDeviceHost(currentTarget, dst_n, dst_layer);
+    dst_layer =_copyDeviceHost_CUDA(currentTarget, dst_n, dst_layer);
     for (int i=0; i < dst_n; i++) {
         dst_layer[i] = tanh(dst_layer[i]);
     }

@@ -29,14 +29,14 @@
 
 /* ---------------- [[HELPER FUNCTIONS FOR GLOBAL MEMORY]] ---------------- */
 
-float *_copyHostDevice(float *src, int src_size) {
+float *_copyHostDevice_CUDA(float *src, int src_size) {
     float *src_d;
     cudaMalloc((void**)&src_d, sizeof(float) * src_size);
     cudaMemcpy(src_d, src, sizeof(float) * src_size, cudaMemcpyHostToDevice);
     return src_d;
 }
 
-float *_copyDeviceHost(float *src, int src_size, float *dst=NULL) {
+float *_copyDeviceHost_CUDA(float *src, int src_size, float *dst=NULL) {
     float *target;
     if (dst == NULL) {
         target = (float*)malloc(sizeof(float) * src_size);
