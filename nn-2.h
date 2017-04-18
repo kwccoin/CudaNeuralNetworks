@@ -23,7 +23,7 @@
 #endif
 
 #ifndef NO_OF_RUN
-#define NO_OF_RUN 2
+#define NO_OF_RUN 1000
 #endif
 
 #ifndef NO_INPUT_NEURON
@@ -31,7 +31,7 @@
 #endif
 
 #ifndef NO_OUTPUT_NEURON
-#define NO_OUTPUT_NEURON 1
+#define NO_OUTPUT_NEURON 2
 #endif
 
 #ifndef NO_HIDDEN_NEURON
