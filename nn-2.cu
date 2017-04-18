@@ -108,26 +108,27 @@ NeuralNet buildNeuralNet(int n_inputs, int n_outputs, int n_hidden) {
     
     // absolute minimum model is 2i-2h-2h-2o and patternfs.  
 
-    float *out_input = (float *)malloc(sizeof(float) * (n_inputs + 1)); // need 1 extra ? got bias
+    float *out_input = (float *)malloc(sizeof(float) * (n_inputs + 1)); // add 1 for bias
     
-    float *out_hidden = (float *)malloc(sizeof(float) * n_hidden); // no 1 extra ? no bias
+    float *out_hidden = (float *)malloc(sizeof(float) * (n_hidden + 1)); // add 1 for bias
     
     float *out_output = (float *)malloc(sizeof(float) * n_outputs);
 
-    buildLayer(out_input, n_inputs + 1, 1.0f);  // why plus 1 here ??
+    buildLayer(out_input, n_inputs + 1, 1.0f);  // add 1 for bias
     
-    buildLayer(out_hidden, n_hidden, 1.0f);
+    buildLayer(out_hidden, n_hidden + 1, 1.0f); // add 1 for bias
+    
     buildLayer(out_output, n_outputs, 1.0f);
 
     // Build changes layer ? not sure what is this
     
     float *changes_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden, 0.0f);
-    float *changes_hidden_output = buildWeightsLayer(n_hidden, n_outputs, 0.0f);
+    float *changes_hidden_output = buildWeightsLayer(n_hidden + 1, n_outputs, 0.0f);
 
     // Build weight matrix
     
     float *w_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden,  -1.0f); // random
-    float *w_hidden_output = buildWeightsLayer(n_hidden, n_outputs,  -1.0f); // random)
+    float *w_hidden_output = buildWeightsLayer(n_hidden + 1, n_outputs,  -1.0f); // random)
 
 	w_input_hidden[0] = 0.15;
 	w_input_hidden[1] = 0.20;
@@ -137,25 +138,26 @@ NeuralNet buildNeuralNet(int n_inputs, int n_outputs, int n_hidden) {
 	w_input_hidden[5] = 0.35;
 	
 	w_hidden_output[0] = .40;
-	w_hidden_output[1] = .45; // missing 0.60 no bias
-	w_hidden_output[2] = .50;
-	w_hidden_output[3] = .55; // missing 0.60 no bias
-
+	w_hidden_output[1] = .45; 
+	w_hidden_output[2] = .60;
+	w_hidden_output[3] = .40; 
+	w_hidden_output[4] = .55;
+	w_hidden_output[5] = .60;
 
     NeuralNet nn;
 
-    nn.n_inputs = n_inputs + 1;
+    nn.n_inputs  = n_inputs + 1;
     nn.n_outputs = n_outputs;
-    nn.n_hidden = n_hidden;
+    nn.n_hidden  = n_hidden + 1;
 
-    nn.out_input = out_input;
+    nn.out_input  = out_input;
     nn.out_hidden = out_hidden;
     nn.out_output = out_output;
 
-    nn.changes_input_hidden = changes_input_hidden;
+    nn.changes_input_hidden  = changes_input_hidden;
     nn.changes_hidden_output = changes_hidden_output;
 
-    nn.w_input_hidden = w_input_hidden;
+    nn.w_input_hidden  = w_input_hidden;
     nn.w_hidden_output = w_hidden_output;
 
     return nn;
@@ -170,8 +172,8 @@ void print_nn(NeuralNet nn){
 	
 	int i; 
 	printf("\n nn.n_inputs already plus 1: %d",    nn.n_inputs);
-	printf("\n nn.n_hidden:            %d",    nn.n_hidden);
-	printf("\n nn.n_outputs:           %d\n\n",nn.n_outputs);
+	printf("\n nn.n_hidden:                %d",    nn.n_hidden);
+	printf("\n nn.n_outputs:               %d\n\n",nn.n_outputs);
 
 	// no nn.n_inputs + 1
 	for(i=0; i < (nn.n_inputs); i++)                {printf(" nn.out_input[%d]: %f\n",             i, nn.out_input[i]);};
@@ -212,13 +214,17 @@ void update_patternf(Patternf patternf, NeuralNet nn) {
 
     // Write inputs // mixing all 3 togethers
     int i;
-    for(i=0; i < (nn.n_inputs -1); i++) {        // -1 here ... why??
-        nn.out_input[i] = patternf.data[i];     // why pattern.data[i] here ??? here it will store of these data in out_input[i]
+    for(i=0; i < (nn.n_inputs -1); i++) {       // nn.nn_inputs already plus 1 and hence -1 here 
+        nn.out_input[i] = patternf.data[i];     // pattern.data[i] -> out_input[i] more than 1 input neuron 
     }
+    nn.out_input[nn.n_inputs -1] = 1.00; // bias ???!!!
 
     // Run parallel update and amend to use cuda 
     
     update_layer_CUDA(nn.out_input,  nn.out_hidden, nn.n_inputs, nn.n_hidden,  nn.w_input_hidden);
+    
+    nn.out_hidden[nn.n_hidden -1] = 1.00; // bias ??? very important as normal processing all hidden neuron would be updated even bias node
+    
     update_layer_CUDA(nn.out_hidden, nn.out_output, nn.n_hidden, nn.n_outputs, nn.w_hidden_output);
 
     if (DEBUG | DEBUG2) {
@@ -292,7 +298,7 @@ void train_network(Patternf *patternfs, int n_patternfs, int n_iterations, Neura
        error += back_propagate_network(patternfs[j], nn);
     }
     if (i % 10 == 0 | i < 10) {
-       printf("nn-2-235 Error for iter %d is: %-.5f\n", i, error);
+       printf("nn-2-295 Error for iter %d is: %-.5f\n", i, error);
        if (DEBUG | DEBUG2) _sleep(2);  // why need sleep ???
     }
   }

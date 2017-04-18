@@ -19,14 +19,14 @@ nn-2_cuda.debug:nn-2.cu nn-2_cuda.cu utils-2_cuda.cu utils-2.c nn-2.h nn-2_cuda.
 	# -DDEBUG2c
 
 run: build
-	nvprof ./nn-2_cuda.out
+	nvprof ./nn-2_cuda.out 1000
 
 r2: build
 	nvprof ./nn-2_cuda.out 2
 
 
 debug: build
-	nvprof ./nn-2_cuda.debug
+	nvprof ./nn-2_cuda.debug 1000
 
 d2: build
 	nvprof ./nn-2_cuda.debug 2
