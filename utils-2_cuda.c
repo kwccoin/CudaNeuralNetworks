@@ -68,29 +68,3 @@ dim3 getGridBasedOnBlockSize(int width, int height, int block_size) {
     return dim3(gridX, gridY);
 }
 
-/* ---------------- [[HELPER FUNCTIONS FOR DEBUGGING]] ---------------- */
-
-void _sleep(int n) {
-
-  //sleep:
-  #ifdef _WIN32
-  Sleep(n);
-  #else
-  usleep(n*1000);  /* sleep for 100 milliSeconds */
-  #endif
-  
-    //#ifdef __APPLE__
-        //sleep(n);
-    //#else _WIN32
-        //sleep(n * 1000);
-    //#endif
-}
-
-void drawMatrix(float *m, int width, int height) {
-    for (int i=0; i < height; i++) {
-        for (int j=0; j < width; j++) {
-            printf("u-1-86 %f ", m[i * width + j]);
-        }
-        printf("\n");
-    }
-}
