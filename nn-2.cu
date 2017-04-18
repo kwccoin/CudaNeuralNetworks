@@ -4,32 +4,14 @@
 #include <math.h>
 //#include <time.h>
 
-#include "utils.c"
-#include "parallel.cu"
+#include "nn-2.h"
 
-#ifdef _WIN32
-#include <Windows.h>
-#else
-#include <unistd.h>
-#endif
+#include "utils-2.c"
+#include "utilise-2_cuda.c"
+#include "nn-2_cuda.c"
 
-// use this and then if there is -DDEBUG it would be set but if not then it is false!
-
-#ifndef DEBUG
-#define DEBUG false
-#endif
-
-#ifndef DEBUG2
-#define DEBUG2 false
-#endif
-
-
-//#ifdef __APPLE__
-//    #include <unistd.h>
-//#else _WIN32
-//    #include <windows.h>
-//#endif
-
+//#include "utilise.c"
+//#include "parallel.cu"
 
 typedef struct 
 
@@ -181,10 +163,10 @@ void update_pattern(Pattern pattern, NeuralNet nn) {
         nn.out_input[i] = pattern.data[i];
     }
 
-    // Run parallel update
-    update_layer(nn.out_input, nn.out_hidden, nn.n_inputs, nn.n_hidden, nn.w_input_hidden);
+    // Run parallel update and amend to use cuda 
+    update_layer_CUDA(nn.out_input, nn.out_hidden, nn.n_inputs, nn.n_hidden, nn.w_input_hidden);
     
-    update_layer(nn.out_hidden, nn.out_output, nn.n_hidden, nn.n_outputs, nn.w_hidden_output);
+    update_layer_CUDA(nn.out_hidden, nn.out_output, nn.n_hidden, nn.n_outputs, nn.w_hidden_output);
 
     if (DEBUG2) {
         printf("\n nn-2-132 ***** END LAYER UPDATE *****\n");
@@ -192,6 +174,8 @@ void update_pattern(Pattern pattern, NeuralNet nn) {
 }
 
 float back_propagate_network(Pattern p, NeuralNet n) {
+
+    // no parallel? No cuda?? Why not all in cuda once built???
 
     if (DEBUG2) {
         printf("\n nn-3-139 ***** BACK PROPAGATE *****\n");
