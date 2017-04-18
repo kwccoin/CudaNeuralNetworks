@@ -59,6 +59,10 @@ typedef struct {
 } Pattern;
 
 void buildLayer(float *arr, int n, float initial) {
+    
+    // why this a layer
+    // we need layers per neutron layer ?
+    
     int i=0;
     while(i < n){
     
@@ -93,16 +97,45 @@ float* buildWeightsLayer(int outer_n, int inner_n, float seed) {
 
 NeuralNet buildNeuralNet(int n_inputs, int n_outputs, int n_hidden) {
 
-    float *out_input = (float *)malloc(sizeof(float) * (n_inputs + 1)); // got 1 extra ? got bias
-    float *out_hidden = (float *)malloc(sizeof(float) * n_hidden); // not got any extra ? no bias
+    // ok for simple to assume only 1 "layer" of hidden ... need concept extension though
+    
+    // per each pattern p as input_feeder[p]
+    
+    // input
+    // input2hidden  - fwd: weights and bias
+    // hidden 
+    // hidden2hidden - fwd: weights and bias
+    //.              - bwd: delta (or hidden)
+    // hidden
+    // hidden2output - fwd: weights and bias
+    //.              - bwd: delta (or hidden)
+    // output
+    //.              - error calc (or in pattern)
+    
+    // per each pattern p as expected_output[p]
+    
+    // batch
+    // regularisation
+    // era
+    // delta 
+    // ...
+    
+    // absolute minimum model is 2i-2h-2h-2o and patterns.  
+
+    float *out_input = (float *)malloc(sizeof(float) * (n_inputs + 1)); // need 1 extra ? got bias
+    
+    float *out_hidden = (float *)malloc(sizeof(float) * n_hidden); // no 1 extra ? no bias
+    
     float *out_output = (float *)malloc(sizeof(float) * n_outputs);
 
-    buildLayer(out_input, n_inputs + 1, 1.0f);
+    buildLayer(out_input, n_inputs + 1, 1.0f);  // why plus 1 here ??
+    
     buildLayer(out_hidden, n_hidden, 1.0f);
     buildLayer(out_output, n_outputs, 1.0f);
 
     // Build changes layer ? not sure what is this
     float *changes_input_hidden = buildWeightsLayer(n_inputs + 1, n_hidden, 0.0f);
+    
     float *changes_hidden_output = buildWeightsLayer(n_hidden, n_outputs, 0.0f);
 
     // Build weight matrix
