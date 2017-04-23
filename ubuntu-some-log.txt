@@ -1,0 +1,529 @@
+dn-dom@dndom-desktop:~$ cd ~/Downloads/
+dn-dom@dndom-desktop:~/Downloads$ ls
+atom-amd64.deb
+cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
+DiffPlugInstallerExtracted
+DiffPlugInstaller_linux_x64_1.6.1.sh
+no CUDA-capable device is detected - NVIDIA Developer Forums_files
+no CUDA-capable device is detected - NVIDIA Developer Forums.html
+NVIDIA_CUDA-8.0_Samples
+NVIDIA-Linux-x86_64-378.13.run
+dn-dom@dndom-desktop:~/Downloads$ cd NVIDIA_CUDA-8.0_Samples/
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples$ ls
+0_Simple     2_Graphics  4_Finance      6_Advanced       bin     EULA.txt
+1_Utilities  3_Imaging   5_Simulations  7_CUDALibraries  common  Makefile
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples$ cd 1_Utilities/
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities$ ls
+bandwidthTest  deviceQueryDrv           topologyQuery
+deviceQuery    p2pBandwidthLatencyTest
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities$ cd deviceQuery
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ ls
+deviceQuery      deviceQuery.o  NsightEclipse.xml
+deviceQuery.cpp  Makefile       readme.txt
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ ./deviceQuery
+./deviceQuery Starting...
+
+ CUDA Device Query (Runtime API) version (CUDART static linking)
+
+Detected 1 CUDA Capable device(s)
+
+Device 0: "Graphics Device"
+  CUDA Driver Version / Runtime Version          8.0 / 8.0
+  CUDA Capability Major/Minor version number:    6.1
+  Total amount of global memory:                 11171 MBytes (11713708032 bytes)
+  (28) Multiprocessors, (128) CUDA Cores/MP:     3584 CUDA Cores
+  GPU Max Clock rate:                            1582 MHz (1.58 GHz)
+  Memory Clock rate:                             5505 Mhz
+  Memory Bus Width:                              352-bit
+  L2 Cache Size:                                 2883584 bytes
+  Maximum Texture Dimension Size (x,y,z)         1D=(131072), 2D=(131072, 65536), 3D=(16384, 16384, 16384)
+  Maximum Layered 1D Texture Size, (num) layers  1D=(32768), 2048 layers
+  Maximum Layered 2D Texture Size, (num) layers  2D=(32768, 32768), 2048 layers
+  Total amount of constant memory:               65536 bytes
+  Total amount of shared memory per block:       49152 bytes
+  Total number of registers available per block: 65536
+  Warp size:                                     32
+  Maximum number of threads per multiprocessor:  2048
+  Maximum number of threads per block:           1024
+  Max dimension size of a thread block (x,y,z): (1024, 1024, 64)
+  Max dimension size of a grid size    (x,y,z): (2147483647, 65535, 65535)
+  Maximum memory pitch:                          2147483647 bytes
+  Texture alignment:                             512 bytes
+  Concurrent copy and kernel execution:          Yes with 2 copy engine(s)
+  Run time limit on kernels:                     Yes
+  Integrated GPU sharing Host Memory:            No
+  Support host page-locked memory mapping:       Yes
+  Alignment requirement for Surfaces:            Yes
+  Device has ECC support:                        Disabled
+  Device supports Unified Addressing (UVA):      Yes
+  Device PCI Domain ID / Bus ID / location ID:   0 / 1 / 0
+  Compute Mode:
+     < Default (multiple host threads can use ::cudaSetDevice() with device simultaneously) >
+
+deviceQuery, CUDA Driver = CUDART, CUDA Driver Version = 8.0, CUDA Runtime Version = 8.0, NumDevs = 1, Device0 = Graphics Device
+Result = PASS
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ apt-get git
+E: Invalid operation git
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ sudo apt-get install git
+[sudo] password for dn-dom:
+E: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
+E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ sudo apt-get install git
+E: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
+E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ ls
+deviceQuery      deviceQuery.o  NsightEclipse.xml
+deviceQuery.cpp  Makefile       readme.txt
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ ls /var/lib/dpkg
+alternatives  cmethopt        info   statoverride  tmp.ci
+arch          diversions      lock   status        triggers
+available     diversions-old  parts  status-old    updates
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ ls /var/lib/dpkg/lock
+/var/lib/dpkg/lock
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ ls /var/lib/dpkg/lock -a
+/var/lib/dpkg/lock
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ sudo rm /var/lib/dpkg/lock
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ sudo apt-get install git
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem.
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ sudo dpkg --configure -a
+Setting up python3-pil:amd64 (3.1.2-0ubuntu1.1) ...
+Processing triggers for gconf2 (3.2.6-3ubuntu6) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Setting up linux-libc-dev:amd64 (4.4.0-72.93) ...
+Setting up oxideqt-codecs:amd64 (1.21.5-0ubuntu0.16.04.1) ...
+Processing triggers for libc-bin (2.23-0ubuntu7) ...
+/sbin/ldconfig.real: /usr/lib/nvidia-375/libEGL.so.1 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/lib32/nvidia-375/libEGL.so.1 is not a symbolic link
+
+Processing triggers for systemd (229-4ubuntu16) ...
+Processing triggers for shared-mime-info (1.5-2ubuntu0.1) ...
+Processing triggers for fontconfig (2.11.94-0ubuntu1.1) ...
+Setting up linux-image-4.8.0-46-generic (4.8.0-46.49~16.04.1) ...
+Running depmod.
+update-initramfs: deferring update (hook will be called later)
+The link /initrd.img is a dangling linkto /boot/initrd.img-4.8.0-46-generic
+vmlinuz(/boot/vmlinuz-4.8.0-46-generic
+) points to /boot/vmlinuz-4.8.0-46-generic
+ (/boot/vmlinuz-4.8.0-46-generic) -- doing nothing at /var/lib/dpkg/info/linux-image-4.8.0-46-generic.postinst line 491.
+Examining /etc/kernel/postinst.d.
+run-parts: executing /etc/kernel/postinst.d/apt-auto-removal 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+run-parts: executing /etc/kernel/postinst.d/dkms 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+sh: 0: getcwd() failed: No such file or directory
+Error! Bad return status for module build on kernel: 4.8.0-46-generic (x86_64)
+Consult /var/lib/dkms/nvidia-375/375.39/build/make.log for more information.
+run-parts: executing /etc/kernel/postinst.d/initramfs-tools 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+update-initramfs: Generating /boot/initrd.img-4.8.0-46-generic
+
+
+run-parts: executing /etc/kernel/postinst.d/pm-utils 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+run-parts: executing /etc/kernel/postinst.d/unattended-upgrades 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+run-parts: executing /etc/kernel/postinst.d/update-notifier 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+run-parts: executing /etc/kernel/postinst.d/zz-update-grub 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+Generating grub configuration file ...
+Warning: Setting GRUB_TIMEOUT to a non-zero value when GRUB_HIDDEN_TIMEOUT is set is no longer supported.
+Found linux image: /boot/vmlinuz-4.8.0-46-generic
+Found initrd image: /boot/initrd.img-4.8.0-46-generic
+Found linux image: /boot/vmlinuz-4.8.0-36-generic
+Found initrd image: /boot/initrd.img-4.8.0-36-generic
+Found linux image: /boot/vmlinuz-4.4.0-72-generic
+Found initrd image: /boot/initrd.img-4.4.0-72-generic
+Found memtest86+ image: /boot/memtest86+.elf
+Found memtest86+ image: /boot/memtest86+.bin
+done
+Setting up linux-headers-4.8.0-46 (4.8.0-46.49~16.04.1) ...
+Setting up liboxideqtcore0:amd64 (1.21.5-0ubuntu0.16.04.1) ...
+Setting up linux-headers-4.8.0-46-generic (4.8.0-46.49~16.04.1) ...
+Examining /etc/kernel/header_postinst.d.
+run-parts: executing /etc/kernel/header_postinst.d/dkms 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+sh: 0: getcwd() failed: No such file or directory
+ERROR: Cannot create report: [Errno 17] File exists: '/var/crash/nvidia-375.0.crash'
+Error! Bad return status for module build on kernel: 4.8.0-46-generic (x86_64)
+Consult /var/lib/dkms/nvidia-375/375.39/build/make.log for more information.
+Setting up liboxideqtquick0:amd64 (1.21.5-0ubuntu0.16.04.1) ...
+Setting up linux-image-extra-4.8.0-46-generic (4.8.0-46.49~16.04.1) ...
+run-parts: executing /etc/kernel/postinst.d/apt-auto-removal 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+dpkg-query: error: parsing file '/var/lib/dpkg/updates/0033' near line 0:
+ newline in field name '#padding'
+dpkg-query: error: parsing file '/var/lib/dpkg/updates/0033' near line 0:
+ newline in field name '#padding'
+run-parts: executing /etc/kernel/postinst.d/dkms 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+sh: 0: getcwd() failed: No such file or directory
+ERROR: Cannot create report: [Errno 17] File exists: '/var/crash/nvidia-375.0.crash'
+Error! Bad return status for module build on kernel: 4.8.0-46-generic (x86_64)
+Consult /var/lib/dkms/nvidia-375/375.39/build/make.log for more information.
+run-parts: executing /etc/kernel/postinst.d/initramfs-tools 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+update-initramfs: Generating /boot/initrd.img-4.8.0-46-generic
+run-parts: executing /etc/kernel/postinst.d/pm-utils 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+run-parts: executing /etc/kernel/postinst.d/unattended-upgrades 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+run-parts: executing /etc/kernel/postinst.d/update-notifier 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+run-parts: executing /etc/kernel/postinst.d/zz-update-grub 4.8.0-46-generic /boot/vmlinuz-4.8.0-46-generic
+Generating grub configuration file ...
+Warning: Setting GRUB_TIMEOUT to a non-zero value when GRUB_HIDDEN_TIMEOUT is set is no longer supported.
+Found linux image: /boot/vmlinuz-4.8.0-46-generic
+Found initrd image: /boot/initrd.img-4.8.0-46-generic
+Found linux image: /boot/vmlinuz-4.8.0-36-generic
+Found initrd image: /boot/initrd.img-4.8.0-36-generic
+Found linux image: /boot/vmlinuz-4.4.0-72-generic
+Found initrd image: /boot/initrd.img-4.4.0-72-generic
+Found memtest86+ image: /boot/memtest86+.elf
+Found memtest86+ image: /boot/memtest86+.bin
+done
+Setting up linux-image-generic-hwe-16.04 (4.8.0.46.18) ...
+Setting up liboxideqt-qmlplugin:amd64 (1.21.5-0ubuntu0.16.04.1) ...
+Setting up linux-headers-generic-hwe-16.04 (4.8.0.46.18) ...
+Setting up linux-generic-hwe-16.04 (4.8.0.46.18) ...
+Setting up libreoffice-common (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Installing new version of config file /etc/bash_completion.d/libreoffice.sh ...
+Setting up libreoffice-core (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up python3-uno (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+dpkg-query: error: parsing file '/var/lib/dpkg/updates/0039' near line 0:
+ newline in field name '#padding'
+Traceback (most recent call last):
+  File "/usr/bin/py3compile", line 290, in <module>
+    main()
+  File "/usr/bin/py3compile", line 270, in main
+    options.force, options.optimize, e_patterns)
+  File "/usr/bin/py3compile", line 154, in compile
+    for fn, versions_to_compile in filter_files(files, e_patterns, versions):
+  File "/usr/bin/py3compile", line 106, in filter_files
+    for fn in files:
+  File "/usr/share/python3/debpython/files.py", line 71, in filter_public
+    for fn in files:
+  File "/usr/share/python3/debpython/files.py", line 53, in from_package
+    raise Exception("cannot get content of %s" % package_name)
+Exception: cannot get content of python3-uno
+dpkg: error processing package python3-uno (--configure):
+ subprocess installed post-installation script returned error exit status 1
+Setting up libreoffice-pdfimport (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-gtk (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-draw (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-avmedia-backend-gstreamer (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-style-galaxy (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-impress (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-math (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-base-core (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-calc (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-style-breeze (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-gnome (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-ogltrans (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Setting up libreoffice-writer (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+Processing triggers for libc-bin (2.23-0ubuntu7) ...
+/sbin/ldconfig.real: /usr/lib/nvidia-375/libEGL.so.1 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/lib32/nvidia-375/libEGL.so.1 is not a symbolic link
+
+Errors were encountered while processing:
+ python3-uno
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ sudo apt-get install git
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+git is already the newest version (1:2.7.4-0ubuntu1).
+0 upgraded, 0 newly installed, 0 to remove and 43 not upgraded.
+1 not fully installed or removed.
+After this operation, 0 B of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Setting up python3-uno (1:5.1.6~rc2-0ubuntu1~xenial1) ...
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ ls
+deviceQuery      deviceQuery.o  NsightEclipse.xml
+deviceQuery.cpp  Makefile       readme.txt
+dn-dom@dndom-desktop:~/Downloads/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery$ cd ~/Downloads/
+dn-dom@dndom-desktop:~/Downloads$ ls
+atom-amd64.deb
+Cloning a repository - User Documentation_files
+Cloning a repository - User Documentation.html
+cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
+DiffPlugInstallerExtracted
+DiffPlugInstaller_linux_x64_1.6.1.sh
+no CUDA-capable device is detected - NVIDIA Developer Forums_files
+no CUDA-capable device is detected - NVIDIA Developer Forums.html
+NVIDIA_CUDA-8.0_Samples
+NVIDIA-Linux-x86_64-378.13.run
+PackageManagerTroubleshootingProcedure - Community Help Wiki_files
+PackageManagerTroubleshootingProcedure - Community Help Wiki.html
+dn-dom@dndom-desktop:~/Downloads$ git clone https://github.com/kwccoin/CudaNeuralNetworks.git
+Cloning into 'CudaNeuralNetworks'...
+remote: Counting objects: 228, done.
+remote: Compressing objects: 100% (176/176), done.
+remote: Total 228 (delta 85), reused 0 (delta 0), pack-reused 46
+Receiving objects: 100% (228/228), 14.86 MiB | 4.70 MiB/s, done.
+Resolving deltas: 100% (102/102), done.
+Checking connectivity... done.
+dn-dom@dndom-desktop:~/Downloads$ git commit -m "only html"
+fatal: Not a git repository (or any of the parent directories): .git
+dn-dom@dndom-desktop:~/Downloads$ ls
+atom-amd64.deb
+CudaNeuralNetworks
+cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
+DiffPlugInstallerExtracted
+DiffPlugInstaller_linux_x64_1.6.1.sh
+NVIDIA_CUDA-8.0_Samples
+NVIDIA-Linux-x86_64-378.13.run
+dn-dom@dndom-desktop:~/Downloads$ cd CudaNeuralNetworks/
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ git commit -m "only html"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'dn-dom@dndom-desktop.(none)')
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ git config --global user.email "you@example.com"
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ git config --global user.name "Your Name"
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ git commit -m "only html"On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	html-helper-pages/
+
+nothing added to commit but untracked files present
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ git push origin master
+Username for 'https://github.com': kwccoin@gmail.com
+Password for 'https://kwccoin@gmail.com@github.com':
+Everything up-to-date
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ git add *
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ git commit -m "only html after add"
+[master 104b276] only html after add
+ 60 files changed, 5816 insertions(+)
+ create mode 100644 html-helper-pages/Cloning a repository - User Documentation.html
+ create mode 100644 html-helper-pages/Cloning a repository - User Documentation_files/application.css
+ create mode 100644 html-helper-pages/Cloning a repository - User Documentation_files/application.js
+ create mode 100644 html-helper-pages/Cloning a repository - User Documentation_files/clone-repo-clone-url-button.png
+ create mode 100644 html-helper-pages/Cloning a repository - User Documentation_files/ga.js
+ create mode 100644 html-helper-pages/Cloning a repository - User Documentation_files/https-url-clone.png
+ create mode 100644 html-helper-pages/Cloning a repository - User Documentation_files/invertocat.png
+ create mode 100644 "html-helper-pages/Committing changes \302\267 abhikp_git-test Wiki.html"
+ create mode 100644 "html-helper-pages/Committing changes \302\267 abhikp_git-test Wiki_files/7194447.jpeg"
+ create mode 100644 "html-helper-pages/Committing changes \302\267 abhikp_git-test Wiki_files/frameworks-6d109e75ad8471ba415082726c00c35fb929ceab9750824928.js"
+ create mode 100644 "html-helper-pages/Committing changes \302\267 abhikp_git-test Wiki_files/frameworks-d7b19415c108234b91acac0d0c02091c860993c13687a757e.css"
+ create mode 100644 "html-helper-pages/Committing changes \302\267 abhikp_git-test Wiki_files/github-55316b70ec9eb5a4dd5cd168f8f8da4d5fe20c53564512dd5aace9.js"
+ create mode 100644 "html-helper-pages/Committing changes \302\267 abhikp_git-test Wiki_files/github-678c6c9fa597e3eabad2135736d58fe40e2ef37d8e272589d7d39.css"
+ create mode 100644 "html-helper-pages/Committing changes \302\267 abhikp_git-test Wiki_files/wiki-188cf566f835ccdac6fe9f288491896ccc1b9a9980860f0396f5c800.js"
+ create mode 100644 html-helper-pages/PackageManagerTroubleshootingProcedure - Community Help Wiki.html
+ create mode 100644 html-helper-pages/PackageManagerTroubleshootingProcedure - Community Help Wiki_files/common.css
+ create mode 100644 html-helper-pages/PackageManagerTroubleshootingProcedure - Community Help Wiki_files/common.js
+ create mode 100644 html-helper-pages/PackageManagerTroubleshootingProcedure - Community Help Wiki_files/print.css
+ create mode 100644 html-helper-pages/PackageManagerTroubleshootingProcedure - Community Help Wiki_files/projection.css
+ create mode 100644 html-helper-pages/PackageManagerTroubleshootingProcedure - Community Help Wiki_files/screen.css
+ create mode 100644 "html-helper-pages/Pushing changes to origin master \302\267 abhikp_git-test Wiki.html"
+ create mode 100644 "html-helper-pages/Pushing changes to origin master \302\267 abhikp_git-test Wiki_files/7194447.jpeg"
+ create mode 100644 "html-helper-pages/Pushing changes to origin master \302\267 abhikp_git-test Wiki_files/frameworks-6d109e75ad8471ba415082726c00c35fb929ceab9750824928.js"
+ create mode 100644 "html-helper-pages/Pushing changes to origin master \302\267 abhikp_git-test Wiki_files/frameworks-d7b19415c108234b91acac0d0c02091c860993c13687a757e.css"
+ create mode 100644 "html-helper-pages/Pushing changes to origin master \302\267 abhikp_git-test Wiki_files/github-55316b70ec9eb5a4dd5cd168f8f8da4d5fe20c53564512dd5aace9.js"
+ create mode 100644 "html-helper-pages/Pushing changes to origin master \302\267 abhikp_git-test Wiki_files/github-678c6c9fa597e3eabad2135736d58fe40e2ef37d8e272589d7d39.css"
+ create mode 100644 "html-helper-pages/Pushing changes to origin master \302\267 abhikp_git-test Wiki_files/wiki-188cf566f835ccdac6fe9f288491896ccc1b9a9980860f0396f5c800.js"
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums.html
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/1757829537781597
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/9557dbf16c
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/YG7C6532EJECRHNNDT4TP7
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/analytics.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/bundle.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/default.css
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/default_002.css
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/fbevents.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/fileuploader.css
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/font-awesome.css
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/ga.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/jquery-1.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/jquery.css
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/jquery_002.css
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/nr-1026.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/out.gif
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/out.html
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/out_002.gif
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/out_003.gif
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/out_004.gif
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/out_005.gif
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/out_006.gif
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/out_007.gif
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/prettify.css
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/prettify.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/profile-default-devtalk-84.png
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/roundtrip.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/s-code-contents-72887b31a9638f8b3cff7981a426c38c354f6412.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/satellite-57adc78464746d3e8a000ed9.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/sendrolling.js
+ create mode 100644 html-helper-pages/no CUDA-capable device is detected - NVIDIA Developer Forums_files/style.css
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ git push origin master
+Username for 'https://github.com': kwccoin@gmail.com
+Password for 'https://kwccoin@gmail.com@github.com':
+Counting objects: 59, done.
+Delta compression using up to 6 threads.
+Compressing objects: 100% (53/53), done.
+Writing objects: 100% (59/59), 692.57 KiB | 0 bytes/s, done.
+Total 59 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/kwccoin/CudaNeuralNetworks.git
+   c8129f7..104b276  master -> master
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ ls
+archive-and-log     dng1-Vadd.mac  html-helper-pages
+_before_cuda_study  dng2-Vadd.w10  nn.python-script
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ cd  dng1-Vadd.mac/
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ ls
+dn-Vadd.c  dn-Vadd.cu  dn-Vadd._cuda.c  dn-Vadd_cuda.out  dn-Vadd.out  Makefile
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ make clean
+rm -f *.out
+rm -f *.debug
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ make
+nvcc dn-Vadd.c -o dn-Vadd.out -DGPU -I/usr/local/cuda/include/ -L/usr/local/cuda/lib -lcuda -lcudart -lcublas -lcurand
+make: nvcc: Command not found
+Makefile:27: recipe for target 'dn-Vadd.out' failed
+make: *** [dn-Vadd.out] Error 127
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ nvcc
+The program 'nvcc' is currently not installed. You can install it by typing:
+sudo apt install nvidia-cuda-toolkit
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ cat ~/.bash_profile
+export PATH=/usr/local/cuda-8.0/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ . ~/.bash_profile
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ echo $PATH
+/usr/local/cuda-8.0/bin:/home/dn-dom/bin:/home/dn-dom/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ make
+nvcc dn-Vadd.c -o dn-Vadd.out -DGPU -I/usr/local/cuda/include/ -L/usr/local/cuda/lib -lcuda -lcudart -lcublas -lcurand
+nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+nvcc dn-Vadd.cu -o dn-Vadd_cuda.out -DGPU -I/usr/local/cuda/include/ -L/usr/local/cuda/lib -lcuda -lcudart -lcublas -lcurand
+nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ ls
+dn-Vadd.c  dn-Vadd.cu  dn-Vadd._cuda.c  dn-Vadd_cuda.out  dn-Vadd.out  Makefile
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ ./dn-Vadd_cuda.out
+host = 0: a[0] + b[0] = 0 + 1 = c[0] = 1
+host = 1: a[1] + b[1] = 1 + 2 = c[1] = 3
+host = 2: a[2] + b[2] = 2 + 3 = c[2] = 5
+host = 3: a[3] + b[3] = 3 + 4 = c[3] = 7
+host = 4: a[4] + b[4] = 4 + 5 = c[4] = 9
+host = 5: a[5] + b[5] = 5 + 6 = c[5] = 11
+host = 6: a[6] + b[6] = 6 + 7 = c[6] = 13
+host = 7: a[7] + b[7] = 7 + 8 = c[7] = 15
+host = 8: a[8] + b[8] = 8 + 9 = c[8] = 17
+host = 9: a[9] + b[9] = 9 + 10 = c[9] = 19
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ vim Makefile
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ git add *
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ git commit -m "ubuntu same make as mac"
+[master 8642c86] ubuntu same make as mac
+ 3 files changed, 1 insertion(+)
+ rewrite dng1-Vadd.mac/dn-Vadd.out (98%)
+ rewrite dng1-Vadd.mac/dn-Vadd_cuda.out (98%)
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ git push origin master
+Username for 'https://github.com': kwccoin@gmail.com
+Password for 'https://kwccoin@gmail.com@github.com':
+Counting objects: 6, done.
+Delta compression using up to 6 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 9.43 KiB | 0 bytes/s, done.
+Total 6 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/kwccoin/CudaNeuralNetworks.git
+   104b276..8642c86  master -> master
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ nvidia-smi
+Sun Apr 23 21:50:51 2017
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 375.39                 Driver Version: 375.39                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  Graphics Device     Off  | 0000:01:00.0      On |                  N/A |
+| 23%   36C    P8    10W / 250W |    344MiB / 11171MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID  Type  Process name                               Usage      |
+|=============================================================================|
+|    0      1089    G   /usr/lib/xorg/Xorg                             187MiB |
+|    0      1748    G   compiz                                         128MiB |
+|    0     23350    G   ...s-passed-by-fd --v8-snapshot-passed-by-fd    26MiB |
++-----------------------------------------------------------------------------+
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks/dng1-Vadd.mac$ cd ..
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ ls
+archive-and-log     dng1-Vadd.mac  html-helper-pages
+_before_cuda_study  dng2-Vadd.w10  nn.python-script
+dn-dom@dndom-desktop:~/Downloads/CudaNeuralNetworks$ cd ..
+dn-dom@dndom-desktop:~/Downloads$ ls
+atom-amd64.deb
+CudaNeuralNetworks
+cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
+DiffPlugInstallerExtracted
+DiffPlugInstaller_linux_x64_1.6.1.sh
+NVIDIA_CUDA-8.0_Samples
+NVIDIA-Linux-x86_64-378.13.run
+dn-dom@dndom-desktop:~/Downloads$ mkdir py-cnn
+dn-dom@dndom-desktop:~/Downloads$ cd py-cnn
+dn-dom@dndom-desktop:~/Downloads/py-cnn$ python
+Python 2.7.12 (default, Nov 19 2016, 06:48:10)
+[GCC 5.4.0 20160609] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+dn-dom@dndom-desktop:~/Downloads/py-cnn$ cd ..
+dn-dom@dndom-desktop:~/Downloads$ git clone https://github.com/kwccoin/neural-networks-and-deep-learning.git
+Cloning into 'neural-networks-and-deep-learning'...
+remote: Counting objects: 1222, done.
+remote: Compressing objects: 100% (18/18), done.
+remote: Total 1222 (delta 5), reused 0 (delta 0), pack-reused 1204
+Receiving objects: 100% (1222/1222), 20.83 MiB | 4.32 MiB/s, done.
+Resolving deltas: 100% (587/587), done.
+Checking connectivity... done.
+dn-dom@dndom-desktop:~/Downloads$ ls
+atom-amd64.deb
+CudaNeuralNetworks
+cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
+DiffPlugInstallerExtracted
+DiffPlugInstaller_linux_x64_1.6.1.sh
+neural-networks-and-deep-learning
+NVIDIA_CUDA-8.0_Samples
+NVIDIA-Linux-x86_64-378.13.run
+py-cnn
+dn-dom@dndom-desktop:~/Downloads$ cd neural-networks-and-deep-learning/
+dn-dom@dndom-desktop:~/Downloads/neural-networks-and-deep-learning$ ls
+data                 fig                      README.md         src
+dennis-running-info  need2move.no.underlines  requirements.txt
+dn-dom@dndom-desktop:~/Downloads/neural-networks-and-deep-learning$ cd src
+dn-dom@dndom-desktop:~/Downloads/neural-networks-and-deep-learning/src$ python dennis-run.py
+dennis-run starting ...
+mnist_loader starting ...
+dennis-run program starting
+dennis-run training starting
+Epoch 0: 9046 / 10000
+Epoch 1: 9238 / 10000
+Epoch 2: 9292 / 10000
+Epoch 3: 9398 / 10000
+Epoch 4: 9405 / 10000
+Epoch 5: 9408 / 10000
+Epoch 6: 9443 / 10000
+Epoch 7: 9443 / 10000
+Epoch 8: 9477 / 10000
+Epoch 9: 9460 / 10000
+Epoch 10: 9485 / 10000
+Epoch 11: 9492 / 10000
+Epoch 12: 9486 / 10000
+Epoch 13: 9496 / 10000
+Epoch 14: 9504 / 10000
+Epoch 15: 9497 / 10000
+Epoch 16: 9492 / 10000
+Epoch 17: 9518 / 10000
+Epoch 18: 9493 / 10000
+Epoch 19: 9522 / 10000
+Epoch 20: 9507 / 10000
+Epoch 21: 9513 / 10000
+Epoch 22: 9523 / 10000
+Epoch 23: 9515 / 10000
+Epoch 24: 9526 / 10000
+Epoch 25: 9503 / 10000
+Epoch 26: 9486 / 10000
+Epoch 27: 9499 / 10000
+Epoch 28: 9532 / 10000
+Epoch 29: 9512 / 10000
+dennis-run training end
+1.49915504456
+0.00139284133911
+0.00151705741882
+296.710422039
+dn-dom@dndom-desktop:~/Downloads/neural-networks-and-deep-learning/src$
