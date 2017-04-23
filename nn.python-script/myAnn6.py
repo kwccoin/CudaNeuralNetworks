@@ -112,7 +112,7 @@ for alpha in alphas:
         #if bias:
         #    layer_2[0][-1] = X[0][-1]
         
-        if (j in  [0,1,2]):
+        if (j in  [0]): # [0,1,2]
 
             print ()
             print ("round",j)
