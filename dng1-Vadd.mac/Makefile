@@ -1,3 +1,4 @@
+# ubuntu same Makefile as mac
 # Target rules
 # make -f Makefile
 # make -f Makefile run
