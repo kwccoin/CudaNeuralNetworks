@@ -1,0 +1,2480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+ 
+		<title>no CUDA-capable device is detected - NVIDIA Developer Forums</title>
+	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/1757829537781597" async=""></script><script async="" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/fbevents.js"></script><script type="text/javascript" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/9557dbf16c"></script><script src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/nr-1026.js"></script><script async="" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/analytics.js"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1026.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+	  <meta name="google-site-verification" content="nvZ-LnCstdRILOOBI8SqugAgnwLJ5vTMFlSDzy8pduk">
+        
+
+	<link rel="shortcut icon" href="https://devtalk.nvidia.com/templates/devzone/images/common/favicon.ico?v=1.1.83">
+
+    <link rel="stylesheet" href="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/font-awesome.css">
+	<link type="text/css" href="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/fileuploader.css" rel="stylesheet">
+	<link type="text/css" href="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/prettify.css" rel="stylesheet">
+	<link href="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/jquery_002.css">
+	<link rel="stylesheet" type="text/css" href="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/jquery.css">
+
+	  			  <link href="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/default.css" rel="stylesheet" type="text/css">
+			  			  <link href="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/default_002.css" rel="stylesheet" type="text/css">
+			  
+
+	  <!-- must stay above all other scripts -->
+	  	  <script src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script><script src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/satellite-57adc78464746d3e8a000ed9.js"></script>
+	  	  <script type="text/javascript" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/jquery-1.js"></script>
+	  <script type="text/javascript" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/prettify.js"></script>
+	  
+	  	  <script type="text/javascript" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/bundle.js"></script>
+
+	  	  
+
+	  
+
+		<!--new JS files-->
+		
+		<!-- begin auto-included js files -->
+				<!-- end auto-included js files -->
+
+
+	  <script type="text/javascript">
+		  $.cookie.raw = true;
+		  var dropdownOpen = false;
+
+		  $(document).ready(function() {
+			  if ($('input.date-picker').length)
+				  $('input.date-picker').datepicker({ showAnim : 'hide' });
+
+			  $("body").on('click',".xforum-slider-link", function()
+			  {
+				  var target = $(this).data('for');
+
+				  if ($(this).hasClass('xforum-slider-shown'))
+				  {
+					  // hide
+					  $(this).parents('.forumText').find('.xforum-slider-content-' + target).slideUp();
+					  $(this).removeClass('xforum-slider-shown');
+					  // now switch the caret
+					  $(this).parents('.forumText').find('.xforum-slider-link-' + target).find('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
+				  }
+				  else
+				  {
+					  // show
+					  $(this).parents('.forumText').find('.xforum-slider-content-' + target).slideDown();
+					  $(this).addClass('xforum-slider-shown');
+					  // now switch the caret
+					  $(this).parents('.forumText').find('.xforum-slider-link-' + target).find('.fa-caret-down').removeClass('fa-caret-down').addClass('fa-caret-up');
+
+				  }
+
+			  });
+
+			  $(".dropdown").on('click', function()
+				  {
+					  var menu = $(this).children('.dropdown-menu');
+					  if (menu.is(":visible")) {
+						  menu.hide();
+						  $(this).children('a').removeClass('white');
+						  dropdownOpen = false;
+					  }
+					  else
+					  {
+						  // hide all the others
+						  $(".dropdown-menu").hide();
+						  $(".dropdown > a").removeClass('white');
+						  $(this).children("a").addClass('white');
+						  menu.show();
+						  dropdownOpen = true;
+					  }
+				  }
+			  );
+
+			  $(document).mouseup(function(e)
+			  {
+				  var parent = $(e.target).parents('.dropdown');
+				  if (dropdownOpen && parent.length <= 0)
+				  {
+					  // hide the dropdowns
+					  $(".dropdown-menu").hide();
+					  dropdownOpen = false;
+				  }
+			  });
+
+			  $('#search').on("click", function(e)
+			  {
+
+				  var glass = $("#search");
+				  var navbar = $('#header-nav');
+				  var searchBar = $("#search-top-bar");
+				  var searchBarVisible = searchBar.is(":visible");
+				  var searchBarWidth = 300;
+
+				  if (searchBarVisible)
+				  {
+
+					  navbar.fadeIn();
+					  searchBar.animate({
+						  'width': 0,
+						  'left':0,
+						  'height': '36px',
+						  'opacity': 0
+					  }, 250, 'swing', function()
+					  {
+						  searchBar.hide();
+						  glass.removeClass("green-hover");
+					  });
+				  }
+				  else
+				  {
+
+					  navbar.fadeOut();
+					  searchBar.show();
+					  searchBar.animate({
+						  'width': searchBarWidth,
+						  'left': (-1*searchBarWidth),
+						  'height': '36px',
+						  'opacity': 1
+					  }, 250, 'swing', function()
+					  {
+						  glass.addClass("green-hover");
+						  $("#search-top-bar").focus();
+					  });
+				  }
+
+			  });
+
+
+			  $("#search-top-bar").focusout(function() {
+
+				  $("#search").click();
+			  });
+		  });
+
+		  $(document).on('click', '.date-picker', function() {
+			  var $e = $(this);
+			  $e.parent().css({ position : 'relative' });
+			  $("#ui-datepicker-div").detach().css({ 'z-index' : 5, top : $e.height()+5, left : 0 }).appendTo($e.parent()).show();
+		  });
+	  </script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				prettyPrint();
+				
+				$(".icon-bold").qtip({content: 'Bold', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-underline").qtip({content: 'Underline', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-italic").qtip({content: 'Italic', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-strike").qtip({content: 'Strikethrough', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-link").qtip({content: 'Link', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-image").qtip({content: 'Image', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-ulist").qtip({content: 'Bulleted List', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-olist").qtip({content: 'Numbered List', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-listitem").qtip({content: 'List Item', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-code").qtip({content: 'Code Block', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-left").qtip({content: 'Left Justified', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-center").qtip({content: 'Centered', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-right").qtip({content: 'Right Justified', show: 'mouseover', hide: 'mouseout'});
+				$(".icon-justify").qtip({content: 'Full Justified', show: 'mouseover', hide: 'mouseout'});
+				
+			});
+		</script>
+		
+		<script type="text/javascript">
+		
+		$(document).on('keydown', '#search-top-bar', function(e) {
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if (code == 13)
+				window.location = '/search/more/sitecommentsearch/'+encodeURIComponent($(this).val())+'/';
+		});
+		</script>
+		
+		<script type="text/javascript">
+		function CheckPasswordStrength(string)
+		{
+			var variations = {
+				digits : /\d/.test(string),
+				lower : /[a-z]/.test(string),
+				upper : /[A-Z]/.test(string),
+				symbols : /[\!\@\#\$\%\^\&\*\(\)\_\-\=\|\{\}\+\[\]\\\'\;\"\:\/\?\.\>\<\,\`\~]/.test(string)
+			};
+			
+			var count = 0;
+			for (var check in variations)
+				count += (variations[check] == true) ? 1 : 0;
+			
+			if (count >= 3 && string.length >= 8)
+				return true;
+			else
+				return false;
+		}
+		</script>
+		
+		<script type="text/javascript">
+		$(document).on('click', '.subscribe:not(.require-login)', function(e) {
+            var $e = $(this);
+            var fa = $e.find('.fa');
+            fa.removeClass('fa-rss').addClass('fa-spinner').addClass('fa-pulse');
+			var object = $(this).data('object');
+			var objectid = $(this).data('objectid');
+
+			$.getJSON('/ajax/account/subscribe/'+object+'/'+objectid+'/', function(data) {
+				if (!data.error)
+				{
+					if ($e.hasClass('active'))
+					{
+						$e.removeClass('active');
+						fa.removeClass('dim').addClass('aqua');
+						$e.removeClass('click-inactive').addClass('click');
+					}
+					else
+					{
+						$e.addClass('active');
+						fa.removeClass('aqua').addClass('dim');
+						$e.removeClass('click').addClass('click-inactive');
+					}
+				}
+				else
+					alert('There was an error subscribing to the '+object);
+
+                fa.removeClass('fa-spinner').removeClass('fa-pulse').addClass('fa-rss');
+			});
+		});
+		</script>
+		
+		<script type="text/javascript">
+		cursorPosition = 0;
+		
+		$(document).on('mouseup', '.textarea-wrapper .icon', function () {
+			$('#topicReply,#topicText').keyup();
+		})
+		
+        $(document).on('mouseup', '.textarea-toolbar .icon', function() {
+            if (!$(this).hasClass('simplecolorpicker'))
+            {
+                var e = $(this).parents('.textarea-wrapper').find('textarea');
+                $(e).setCursorPosition(cursorPosition);            
+            }
+        });
+
+		
+		$(document).on('mousedown', '.icon-bold', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();				
+			$(e).insertAtCaret('[b]*[/b]');
+			if (s.length <= 0)
+				cursorPosition = p+3;
+			else
+				cursorPosition = p+s.length+4+3;
+		});
+		
+		$(document).on('mousedown', '.icon-italic', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');		
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();
+			$(e).insertAtCaret('[i]*[/i]');
+			if (s.length <= 0)
+				cursorPosition = p+3;
+			else
+				cursorPosition = p+s.length+4+3;
+		});
+		
+		$(document).on('mousedown', '.icon-underline', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();
+			$(e).insertAtCaret('[u]*[/u]');
+			if (s.length <= 0)
+				cursorPosition = p+3;
+			else
+				cursorPosition = p+s.length+4+3;
+		});
+		
+		$(document).on('mousedown', '.icon-strike', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();
+			$(e).insertAtCaret('[s]*[/s]');
+			if (s.length <= 0)
+				cursorPosition = p+3;
+			else
+				cursorPosition = p+s.length+4+3;
+		});
+		
+		$(document).on('mousedown', '.icon-link', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();
+			$(e).insertAtCaret('[url]*[/url]');
+			if (s.length <= 0)
+				cusrsorPosition = p+5;
+			else
+				cursorPosition = p+s.length+6+5;
+		});
+		
+				$(document).on('mousedown', '.icon-image', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();
+			$(e).insertAtCaret('[img]*[/img]');
+			if (s.length <= 0)
+                cursorPosition = p+5;
+			else
+				cursorPosition = p+s.length+6+5;
+		});
+				
+		$(document).on('mousedown', '.icon-olist', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();
+			$(e).insertAtCaret('[olist]'+"\n"+'[.]*[/.]'+"\n"+'[/olist]'+"\n");
+			if (s.length <= 0)
+				cursorPosition = p+11;
+			else
+				cursorPosition = p+s.length+13+11;
+		});
+		
+		$(document).on('mousedown', '.icon-ulist', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();				
+			$(e).insertAtCaret('[list]'+"\n"+'[.]*[/.]'+"\n"+'[/list]'+"\n");
+			if (s.length <= 0)
+				cursorPosition = p+10;
+			else
+				cursorPosition = p+s.length+12+10;
+		});
+		
+		$(document).on('mousedown', '.icon-listitem', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();				
+			$(e).insertAtCaret('[.]*[/.]'+"\n");
+			if (s.length <= 0)
+				cursprPosition = p+3;
+			else
+				cursorPosition = p+s.length+4+3;
+		});
+		
+		$(document).on('mousedown', '.icon-code', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();				
+			$(e).insertAtCaret('[code]*[/code]'+"\n");
+
+			if (s.length <= 0)
+				cursorPosition = p+6;
+			else
+				cursorPosition = p+s.length+7+6;
+		});
+		
+		$(document).on('mousedown', '.icon-quote', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();				
+			$(e).insertAtCaret('[quote]*[/quote]'+"\n");
+			if (s.length <= 0)
+				cursorPosition = p+7;
+			else
+				cursorPosition = p+s.length+8+7;
+		});
+		
+		$(document).on('mousedown', '.icon-left', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();				
+			$(e).insertAtCaret('[left]*[/left]'+"\n");
+			if (s.length <= 0)
+				cursorPosition = p+6;
+			else
+				cursorPosition = p+s.length+7+6;
+		});		
+		
+        $(document).on('mousedown', '.icon-right', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();				
+			$(e).insertAtCaret('[right]*[/right]'+"\n");
+			if (s.length <= 0)
+				cursorPosition = p+7;
+			else
+				cursorPosition = p+s.length+8+7;
+		});
+		
+        $(document).on('mousedown', '.icon-center', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();				
+			$(e).insertAtCaret('[center]*[/center]'+"\n");
+			if (s.length <= 0)
+				cursorPosition = p+8;
+			else
+				cursorPosition = p+s.length+9+8;
+		});
+
+
+		$(document).on('mousedown', '.icon-justify', function() {
+			var e = $(this).parents('.textarea-wrapper').find('textarea');
+			var s = $(e).getSelection();
+			var p = $(e).getCursorPosition();				
+			$(e).insertAtCaret('[justify]*[/justify]'+"\n");
+			if (s.length <= 0)
+				cursorPosition = p+9;
+			else
+				cursorPosition = p+s.length+10+9;
+		});
+		
+		var colorE;
+		var colorS;
+		var colorP;
+		$(document).on('mousedown', '.icon-color', function() {
+            colorE = $(this).parents('.textarea-wrapper').find('textarea');
+            colorS = $(colorE).getSelection();
+            colorP = $(colorE).getCursorPosition();
+            cursorPosition = colorP;
+		});
+		
+		$(document).ready(function()
+        {
+
+        });
+
+		var sizeE;
+		var sizeS;
+		var sizeP;
+		$(document).on('mousedown', '.icon-size', function() {
+            sizeE = $(this).parents('.textarea-wrapper').find('textarea');
+            sizeS = $(sizeE).getSelection();
+            sizeP = $(sizeE).getCursorPosition();
+            cursorPosition = sizeP;
+		});
+
+        function InitPickers()
+        {
+
+            $(".colorpicker").simplecolorpicker({picker: true}, '#efefef').on('change', function()
+            {
+                var color = $(this).val();
+                switch (color)
+                {
+                    case "#efefef":
+                        color = 'white';
+                        break;
+                    case "#999999":
+                        color = 'gray';
+                        break;
+                    case "#76b900":
+                        color = "green";
+                        break;
+                    case "darkOrange":
+                        color = "orange";
+                        break;
+                    default:
+                        return;
+                }
+
+                createSelection(colorE[0], colorP, colorP + colorS.length);
+
+                $(colorE).insertAtCaret('[color="' + color + '"]*[/color]'+"\n");
+
+                if (colorS.length <= 0)
+                    cursorPosition = colorP + 10 + color.length;
+                else
+                    cursorPosition = colorP + 10 + color.length + colorS.length + 8;
+
+                $(colorE).setCursorPosition(cursorPosition);
+
+
+
+            });
+
+            $(".fontsizepicker").simplefontsizepicker({picker: true}).on('change', function()
+            {
+                var size = $(this).val();
+                switch (size)
+                {
+                    case "11px":
+                        size = 'S';
+                        break;
+                    case "13px":
+                        size = 'N';
+                        break;
+                    case "15px":
+                        size = "M";
+                        break;
+                    case "17px":
+                        size = "L";
+                        break;
+                    case "20px":
+                        size = "XL";
+                        break;
+                    default:
+                        return;
+                }
+
+                createSelection(sizeE[0], sizeP, sizeP + sizeS.length);
+
+                $(sizeE).insertAtCaret('[size="' + size + '"]*[/size]'+"\n");
+
+                if (sizeS.length <= 0)
+                    cursorPosition = sizeP + 9 + size.length;
+                else
+                    cursorPosition = sizeP + 9 + size.length + sizeS.length + 7;
+
+                $(sizeE).setCursorPosition(cursorPosition);
+
+
+
+            });
+        }
+		
+		$(document).ready(function()
+        {
+            InitPickers();
+        });
+
+        
+        function createSelection(field, start, end)
+        {
+            if (field.createTextRange)
+            {
+                var selRange = field.createTextRange();
+                selRange.collapse(true);
+                selRange.moveStart('character', start);
+                selRange.moveEnd('character', end);
+                selRange.select();
+                field.focus();
+            } 
+            else if( field.setSelectionRange ) 
+            {
+                field.focus();
+                field.setSelectionRange(start, end);
+            } 
+            else if( typeof field.selectionStart != 'undefined' ) 
+            {
+                field.selectionStart = start;
+                field.selectionEnd = end;
+                field.focus();
+            }
+
+        }
+		
+		</script>
+		
+			<script src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/s-code-contents-72887b31a9638f8b3cff7981a426c38c354f6412.js"></script><script async="true" type="text/javascript" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/roundtrip.js"></script><script async="true" type="text/javascript" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/YG7C6532EJECRHNNDT4TP7"></script><script type="text/javascript" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/sendrolling.js"></script><div style="width: 1px; height: 1px; display: inline; position: absolute;"><img style="border-style:none;" alt="" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/out_004.gif" width="1" height="1"></div><div style="width: 1px; height: 1px; display: inline; position: absolute;"><img style="border-style:none;" alt="" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/out.asc" width="1" height="1">
+<img style="border-style:none;" alt="" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/out.gif" width="1" height="1">
+<img style="border-style:none;" alt="" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/out_007.gif" width="1" height="1">
+<img style="border-style:none;" alt="" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/out_003.gif" width="1" height="1">
+<img style="border-style:none;" alt="" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/out_005.gif" width="1" height="1">
+<img style="border-style:none;" alt="" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/out_006.gif" width="1" height="1">
+<img style="border-style:none;" alt="" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/out.html" width="1" height="1">
+<img style="border-style:none;" alt="" src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/out_002.gif" width="1" height="1">
+</div></head>
+
+<body class="">
+
+<div id="omni">
+<div id="custom_background_top" class="background-takeover">
+<div id="custom_background_bot" class="background-takeover">
+<div id="page">
+<!-- Start Header -->
+<div id="header">
+<div id="headerPad">
+	<div class="left">
+                            <div id="logo-devzone" class="cudazone">
+                        <a href="http://developer.nvidia.com/accelerated-computing" title="NVIDIA Accelerated Computing" target="_blank"><span></span></a>
+                    </div>
+                    <ul id="header-nav">
+                        <li>
+                            <a href="http://developer.nvidia.com/accelerated-computing-toolkit">Downloads</a>
+                        </li>
+                        <li>
+                            <a href="http://developer.nvidia.com/accelerated-computing-training">Training</a>
+                        </li>
+                        <li>
+                            <a href="http://developer.nvidia.com/tools-ecosystem">Ecosystem</a>
+                        </li>
+                        <li><a href="https://devtalk.nvidia.com/">Forums</a>
+                        </li>
+                    </ul>
+                    	</div>
+	<div class="right">
+		<div class="account-controls">
+            <ul>
+                <li><a href="#" id="search"><i class="fa fa-search" style="margin-top:-2px;"></i></a>
+            <input title="Enter the terms you wish to search for." id="search-top-bar" name="forum_search" placeholder="Search..." style="display: none; width: 0; left: 0; height: 36px; opacity: 0;" type="text">
+                </li>
+
+
+            
+        <li><a href="https://devtalk.nvidia.com/account/register/" class="green"><i class="fa fa-lock fa-fw" style="margin-top:-2px;"></i> Join</a></li>
+        <li><a href="javascript:void(0);" onclick="AuthorizeModal('login')">Login</a></li>
+         </ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<!-- End Header -->
+
+<!-- Start Main Nav -->
+
+
+<div id="main">
+	<div>
+		<div id="breadcrumb"> 
+			<div class="breadcrumbs"><div class="breadcrumb-wrapper"><span class="crumb"><a href="https://developer.nvidia.com/">Home</a></span><span class="separator"> &gt; </span><span class="crumb"><a href="https://developer.nvidia.com/cuda-zone">CUDA ZONE</a></span><span class="separator"> &gt; </span><span class="crumb"><a href="https://devtalk.nvidia.com/">Forums</a></span><span class="separator"> &gt; </span><span class="crumb"><a href="https://devtalk.nvidia.com/default/board/53/accelerated-computing/">Accelerated Computing</a></span><span class="separator"> &gt; </span><span class="crumb"><a href="https://devtalk.nvidia.com/default/board/58/">CUDA Setup and Installation</a></span><span class="separator"> &gt; </span><span class="crumb">View Topic</span></div></div>		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="content"><script type="text/javascript">
+$(document).ready(function()
+{
+    $(".icon-private").qtip({content: 'Private Forum', show: 'mouseover', hide: 'mouseout'});
+    
+});
+
+function CheckEnter(e, event)
+{
+	var code;
+	if (event.charCode)
+		code = event.charCode;
+	else
+		code = event.keyCode;
+	
+	if (code == 13)
+		$(e).blur();
+}
+
+function EditTopicTitle(e, topic)
+{
+	var html = $(e).find('span').html();
+	var length = html.length;
+	$(e).parent().html('<input id="edit-title-input" onBlur="ChangeTopicTitle(this, '+topic+')" onKeyPress="CheckEnter(this, event)" type="text" size="'+length+'" id="topic-title" value="'+html+'" />');
+	$("#edit-title-input").focus();
+}
+
+function ChangeTopicTitle(e, topic)
+{
+	$(e).parent().hide().html('<span onclick="EditTopicTitle(this, '+topic+')"><span>'+$(e).val()+'</span><div class="icon icon-pencil"><i class="fa fa-pencil green"></i></div></span>').fadeIn();
+	var url = '/ajax/default/edit-topic-title/'+topic+'/'+encodeURIComponent($(e).val())+'/';
+	$.getJSON(url, function(data) {
+		if (data.error)
+			alert(data.error);
+	});
+}
+
+function MoveTopic(e, topic)
+{
+	var val = $(e).val();
+	if (val == '')
+		return;
+		
+	var html = $('option:selected').html();
+	var c = confirm('Are you sure you want to move this thread to '+html+'?');
+	
+	if (!c)
+		return;
+		
+	window.location = '/cmd/default/move-topic/'+topic+'/'+val+'/';
+}
+</script>
+
+
+<div class="std_1col">
+
+	<div class="clear"></div>
+	<div class="topic">
+		<div class="topic-title">
+			<div class="topic-title-wrapper">
+									<span>no CUDA-capable device is detected</span>
+				
+                <div class="topic-buttons">
+                    <div class="siteButton add-reply-top"><a href="#reply"><i class="fa fa-reply"></i> Reply</a></div>
+                                        <div class="siteButton add-reply-top notification-subscribe " data-object="xForumTopic" data-objectid="922460"><a href="javascript:void(0);"><i class="fa fa-envelope"></i> <span class="subscribe-text">Follow</span></a></div>
+					
+                    
+                    <div class="imageRight subscribe add-reply-top top   require-login" data-object="xForumTopic" data-objectid="922460">
+                        <a href="javascript:void(0);"><i class="aqua fa fa-rss fa-2x"></i></a>
+                    </div>
+                </div>
+
+			</div>
+
+		</div>
+						<div class="comments">
+
+
+
+<!-- total pages: 1 -->
+<!-- current page: 1 -->
+<!-- baseUrl: /default/topic/922460/cuda-setup-and-installation/no-cuda-capable-device-is-detected/ -->
+<!-- pl: <div class="pageList"><ul><li class="active"><a href="/default/topic/922460/cuda-setup-and-installation/no-cuda-capable-device-is-detected/1">1</a></li></ul></div> -->
+<!-- postNumber: 1 -->
+<!-- akF -->
+<!-- c: 4829701 -->
+<!--s-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var uploader = new qq.FileUploaderBasic({
+		// pass the dom node (ex. $(selector)[0] for jQuery users)
+		button: $('#comment_4829701 .icon-paperclip')[0],
+		// path to server-side upload script
+		debug: true,
+		action: '/ajax/default/upload-comment-attachment/4829701/',
+		onSubmit: function(id, fileName) { $('#comment_4829701 .attachment-loading').show(); $('#comment_4829701 .attachment-loading p').css({ 'display' : 'block', 'width' : '0px' }); $('#comment_4829701 .attachment-loading p').html(''); },
+		onProgress: function(id, fileName, loaded, total) { $('#comment_4829701 .attachment-loading p').width(((loaded/total)*100)+'%'); $('#comment_4829701 .attachment-loading p').html(Math.ceil(loaded/total*100) + '%'); },
+		onComplete: function(id, fileName, responseJSON) { 
+            $('#comment_4829701 .attachment-loading p').fadeOut(function() { 
+                $('#comment_4829701 .attachment-loading p').width('0'); 
+                $('#comment_4829701 .attachment-loading').hide(); 
+                if (responseJSON.success)
+                {
+                    $('#comment_4829701 .attachments fieldset').append('<p>[SCANNING... PLEASE WAIT] '+fileName+'<a class="remove-attachment" href="javascript:DeleteAttachment('+responseJSON.id+');">remove</a></p>'); 
+                    $('#comment_4829701 .attachments').show(); 
+                }
+            }); 
+        }
+	});
+	
+
+});
+</script>
+
+<a id="4829701" class="anchorLink"></a>
+<a id="first_comment" class="anchorLink"></a>
+<div id="comment_4829701" class="   forumComment odd">
+	<div class="raw-comment">I ran ./deviceQuery program and it failed. I'm
+ not sure what I'm missing here. Could it be the GPUs installed are not 
+CUDA capable?
+
+This is the output of the the deviceQuery:
+./deviceQuery Starting...
+
+ CUDA Device Query (Runtime API) version (CUDART static linking)
+
+cudaGetDeviceCount returned 38
+-&gt; no CUDA-capable device is detected
+Result = FAIL
+
+I ran the deviceQuery on Ubuntu 14.04.4 LTS. The GPUs installed are:
+lspci | grep -i nvidia
+06:00.0 VGA compatible controller: NVIDIA Corporation GK104GL [GRID K2] 
+(rev a1)
+07:00.0 VGA compatible controller: NVIDIA Corporation GK104GL [GRID K2] 
+(rev a1)
+
+The driver is:
+cat /proc/driver/nvidia/version 
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  352.63  Sat Nov  7 
+21:25:42 PST 2015
+GCC version:  gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.1) 
+
+Thanks in advance for any help.</div>
+	<div class="left">
+		<div class="profileInfo png">
+			<div class="profileAvatar">
+				<a href="https://devtalk.nvidia.com/member/2115066/"><img src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/profile-default-devtalk-84.png"></a>
+			</div>
+
+			<div class="profileName">
+				<a href="https://devtalk.nvidia.com/member/2115066/">rghamdi</a>			</div>
+			
+						<div class="icons">
+				<a class="icon" href="https://devtalk.nvidia.com/member/2115066/" title="View Member Profile">
+					<i class="fa fa-user fa-lg"></i>
+				</a>
+				<a class="icon" href="javascript:MessageModal('2115066');" title="Send Private Message">
+                    <i class="fa fa-envelope fa-lg"></i>
+                </a>
+												<div class="clear"></div>
+			</div>
+				
+
+
+			
+
+			
+			
+			<div id="more_4829701" class="moreInfo">
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="text-arrow"><i class="fa fa-caret-left fa-3x"></i></div>
+		<div class="forumTextWrapper">
+									<div class="comment-commands-wrapper">
+				<div class="comment-commands">
+										                    										<div class="clear"></div>
+				</div>
+			</div>
+						<div class="forumText">
+I ran ./deviceQuery program and it failed. I'm not sure what I'm missing
+ here. Could it be the GPUs installed are not CUDA capable?<br>
+<br>
+This is the output of the the deviceQuery:<br>
+./deviceQuery Starting...<br>
+<br>
+ CUDA Device Query (Runtime API) version (CUDART static linking)<br>
+<br>
+cudaGetDeviceCount returned 38<br>
+-&gt; no CUDA-capable device is detected<br>
+Result = FAIL<br>
+<br>
+I ran the deviceQuery on Ubuntu 14.04.4 LTS. The GPUs installed are:<br>
+lspci | grep -i nvidia<br>
+06:00.0 VGA compatible controller: NVIDIA Corporation GK104GL [GRID K2] (rev a1)<br>
+07:00.0 VGA compatible controller: NVIDIA Corporation GK104GL [GRID K2] (rev a1)<br>
+<br>
+The driver is:<br>
+cat /proc/driver/nvidia/version <br>
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  352.63  Sat Nov  7 21:25:42 PST 2015<br>
+GCC version:  gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.1) <br>
+<br>
+Thanks in advance for any help.
+				<div class="attachments" style="display:none">
+
+					<fieldset>
+						<legend>Attachments</legend>
+											</fieldset>
+					<div class="attachment-loading"><p></p></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="forumBottom-wrapper">
+			<div class="forumBottom">
+				<div class="forumSig">
+										<p></p>
+										<p>				</p></div>
+				
+				
+
+			<div class="forumNumber png">
+							<a href="https://devtalk.nvidia.com/default/topic/922460/cuda-setup-and-installation/no-cuda-capable-device-is-detected/post/4829701/#4829701" title="Permalink" rel="nofollow">#1</a>
+			</div>
+
+				<div class="forumInfo">
+					Posted 03/09/2016 12:17 AM&nbsp;&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<!-- c: 4829734 -->
+<!--s-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var uploader = new qq.FileUploaderBasic({
+		// pass the dom node (ex. $(selector)[0] for jQuery users)
+		button: $('#comment_4829734 .icon-paperclip')[0],
+		// path to server-side upload script
+		debug: true,
+		action: '/ajax/default/upload-comment-attachment/4829734/',
+		onSubmit: function(id, fileName) { $('#comment_4829734 .attachment-loading').show(); $('#comment_4829734 .attachment-loading p').css({ 'display' : 'block', 'width' : '0px' }); $('#comment_4829734 .attachment-loading p').html(''); },
+		onProgress: function(id, fileName, loaded, total) { $('#comment_4829734 .attachment-loading p').width(((loaded/total)*100)+'%'); $('#comment_4829734 .attachment-loading p').html(Math.ceil(loaded/total*100) + '%'); },
+		onComplete: function(id, fileName, responseJSON) { 
+            $('#comment_4829734 .attachment-loading p').fadeOut(function() { 
+                $('#comment_4829734 .attachment-loading p').width('0'); 
+                $('#comment_4829734 .attachment-loading').hide(); 
+                if (responseJSON.success)
+                {
+                    $('#comment_4829734 .attachments fieldset').append('<p>[SCANNING... PLEASE WAIT] '+fileName+'<a class="remove-attachment" href="javascript:DeleteAttachment('+responseJSON.id+');">remove</a></p>'); 
+                    $('#comment_4829734 .attachments').show(); 
+                }
+            }); 
+        }
+	});
+	
+
+});
+</script>
+
+<a id="4829734" class="anchorLink"></a>
+<div id="comment_4829734" class="   forumComment even">
+	<div class="raw-comment">Have you installed nvidia-modprobe?
+I had to add the following line to /etc/rc.d./rc.local to get CUDA devices to work:
+[code]# Create missing nvidia device nodes after reboot
+/usr/bin/nvidia-modprobe -c 0 -u
+[/code]
+
+Mats
+</div>
+	<div class="left">
+		<div class="profileInfo png">
+			<div class="profileAvatar">
+				<a href="https://devtalk.nvidia.com/member/1884316/"><img src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/profile-default-devtalk-84.png"></a>
+			</div>
+
+			<div class="profileName">
+				<a href="https://devtalk.nvidia.com/member/1884316/">matstegner</a>			</div>
+			
+						<div class="icons">
+				<a class="icon" href="https://devtalk.nvidia.com/member/1884316/" title="View Member Profile">
+					<i class="fa fa-user fa-lg"></i>
+				</a>
+				<a class="icon" href="javascript:MessageModal('1884316');" title="Send Private Message">
+                    <i class="fa fa-envelope fa-lg"></i>
+                </a>
+												<div class="clear"></div>
+			</div>
+				
+
+
+			
+
+			
+			
+			<div id="more_4829734" class="moreInfo">
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="text-arrow"><i class="fa fa-caret-left fa-3x"></i></div>
+		<div class="forumTextWrapper">
+									<div class="comment-commands-wrapper">
+				<div class="comment-commands">
+										                    										<div class="clear"></div>
+				</div>
+			</div>
+						<div class="forumText">
+Have you installed nvidia-modprobe?<br>
+I had to add the following line to /etc/rc.d./rc.local to get CUDA devices to work:<br>
+<pre class="prettyprint linenums" style=""><ol class="linenums"><li class="L0"><span class="com"># Create missing nvidia device nodes after reboot</span><br></li><li class="L1"><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="pln">bin</span><span class="pun">/</span><span class="pln">nvidia</span><span class="pun">-</span><span class="pln">modprobe </span><span class="pun">-</span><span class="pln">c </span><span class="lit">0</span><span class="pln"> </span><span class="pun">-</span><span class="pln">u</span></li></ol></pre><br>
+<br>
+Mats
+				<div class="attachments" style="display:none">
+
+					<fieldset>
+						<legend>Attachments</legend>
+											</fieldset>
+					<div class="attachment-loading"><p></p></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="forumBottom-wrapper">
+			<div class="forumBottom">
+				<div class="forumSig">
+										<p></p>
+										<p>				</p></div>
+				
+				
+
+			<div class="forumNumber png">
+							<a href="https://devtalk.nvidia.com/default/topic/922460/cuda-setup-and-installation/no-cuda-capable-device-is-detected/post/4829734/#4829734" title="Permalink" rel="nofollow">#2</a>
+			</div>
+
+				<div class="forumInfo">
+					Posted 03/09/2016 12:53 AM&nbsp;&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<!-- c: 4829749 -->
+<!--s-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var uploader = new qq.FileUploaderBasic({
+		// pass the dom node (ex. $(selector)[0] for jQuery users)
+		button: $('#comment_4829749 .icon-paperclip')[0],
+		// path to server-side upload script
+		debug: true,
+		action: '/ajax/default/upload-comment-attachment/4829749/',
+		onSubmit: function(id, fileName) { $('#comment_4829749 .attachment-loading').show(); $('#comment_4829749 .attachment-loading p').css({ 'display' : 'block', 'width' : '0px' }); $('#comment_4829749 .attachment-loading p').html(''); },
+		onProgress: function(id, fileName, loaded, total) { $('#comment_4829749 .attachment-loading p').width(((loaded/total)*100)+'%'); $('#comment_4829749 .attachment-loading p').html(Math.ceil(loaded/total*100) + '%'); },
+		onComplete: function(id, fileName, responseJSON) { 
+            $('#comment_4829749 .attachment-loading p').fadeOut(function() { 
+                $('#comment_4829749 .attachment-loading p').width('0'); 
+                $('#comment_4829749 .attachment-loading').hide(); 
+                if (responseJSON.success)
+                {
+                    $('#comment_4829749 .attachments fieldset').append('<p>[SCANNING... PLEASE WAIT] '+fileName+'<a class="remove-attachment" href="javascript:DeleteAttachment('+responseJSON.id+');">remove</a></p>'); 
+                    $('#comment_4829749 .attachments').show(); 
+                }
+            }); 
+        }
+	});
+	
+
+});
+</script>
+
+<a id="4829749" class="anchorLink"></a>
+<div id="comment_4829749" class="   forumComment odd">
+	<div class="raw-comment">I don't have root access. I checked for /usr/bin/nvidia-modprobe and it is not there. I guess it is not installed.</div>
+	<div class="left">
+		<div class="profileInfo png">
+			<div class="profileAvatar">
+				<a href="https://devtalk.nvidia.com/member/2115066/"><img src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/profile-default-devtalk-84.png"></a>
+			</div>
+
+			<div class="profileName">
+				<a href="https://devtalk.nvidia.com/member/2115066/">rghamdi</a>			</div>
+			
+						<div class="icons">
+				<a class="icon" href="https://devtalk.nvidia.com/member/2115066/" title="View Member Profile">
+					<i class="fa fa-user fa-lg"></i>
+				</a>
+				<a class="icon" href="javascript:MessageModal('2115066');" title="Send Private Message">
+                    <i class="fa fa-envelope fa-lg"></i>
+                </a>
+												<div class="clear"></div>
+			</div>
+				
+
+
+			
+
+			
+			
+			<div id="more_4829749" class="moreInfo">
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="text-arrow"><i class="fa fa-caret-left fa-3x"></i></div>
+		<div class="forumTextWrapper">
+									<div class="comment-commands-wrapper">
+				<div class="comment-commands">
+										                    										<div class="clear"></div>
+				</div>
+			</div>
+						<div class="forumText">
+I don't have root access. I checked for /usr/bin/nvidia-modprobe and it is not there. I guess it is not installed.
+				<div class="attachments" style="display:none">
+
+					<fieldset>
+						<legend>Attachments</legend>
+											</fieldset>
+					<div class="attachment-loading"><p></p></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="forumBottom-wrapper">
+			<div class="forumBottom">
+				<div class="forumSig">
+										<p></p>
+										<p>				</p></div>
+				
+				
+
+			<div class="forumNumber png">
+							<a href="https://devtalk.nvidia.com/default/topic/922460/cuda-setup-and-installation/no-cuda-capable-device-is-detected/post/4829749/#4829749" title="Permalink" rel="nofollow">#3</a>
+			</div>
+
+				<div class="forumInfo">
+					Posted 03/09/2016 01:11 AM&nbsp;&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<!-- c: 4829759 -->
+<!--s-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var uploader = new qq.FileUploaderBasic({
+		// pass the dom node (ex. $(selector)[0] for jQuery users)
+		button: $('#comment_4829759 .icon-paperclip')[0],
+		// path to server-side upload script
+		debug: true,
+		action: '/ajax/default/upload-comment-attachment/4829759/',
+		onSubmit: function(id, fileName) { $('#comment_4829759 .attachment-loading').show(); $('#comment_4829759 .attachment-loading p').css({ 'display' : 'block', 'width' : '0px' }); $('#comment_4829759 .attachment-loading p').html(''); },
+		onProgress: function(id, fileName, loaded, total) { $('#comment_4829759 .attachment-loading p').width(((loaded/total)*100)+'%'); $('#comment_4829759 .attachment-loading p').html(Math.ceil(loaded/total*100) + '%'); },
+		onComplete: function(id, fileName, responseJSON) { 
+            $('#comment_4829759 .attachment-loading p').fadeOut(function() { 
+                $('#comment_4829759 .attachment-loading p').width('0'); 
+                $('#comment_4829759 .attachment-loading').hide(); 
+                if (responseJSON.success)
+                {
+                    $('#comment_4829759 .attachments fieldset').append('<p>[SCANNING... PLEASE WAIT] '+fileName+'<a class="remove-attachment" href="javascript:DeleteAttachment('+responseJSON.id+');">remove</a></p>'); 
+                    $('#comment_4829759 .attachments').show(); 
+                }
+            }); 
+        }
+	});
+	
+
+});
+</script>
+
+<a id="4829759" class="anchorLink"></a>
+<div id="comment_4829759" class="   forumComment even">
+	<div class="raw-comment">Okay,
+I have:
+[code]
+bash-4.3# ls -l /usr/bin/ |grep nvidia
+-rwxr-xr-x   1 root   root      23K feb 12 02:27 nvidia-bug-report.sh*
+-rwxr-xr-x   1 root   root     204K feb 12 02:27 nvidia-debugdump*
+-rwxr-xr-x   1 root   root     300K feb 12 02:27 nvidia-installer*
+-rwxr-xr-x   1 root   root      26K feb 12 02:28 nvidia-modprobe*
+-rwxr-xr-x   1 root   root      33K feb 12 02:29 nvidia-persistenced*
+-rwxr-xr-x   1 root   root     1,8M feb 12 02:28 nvidia-settings*
+-rwxr-xr-x   1 root   root     245K feb 12 02:27 nvidia-smi*
+lrwxrwxrwx   1 root   root       16 nov 16 19:12 nvidia-uninstall -&gt; nvidia-installer*
+-rwxr-xr-x   1 root   root     170K feb 12 02:28 nvidia-xconfig*
+[/code]
+
+Do you see these three devices?:
+[code]bash-4.3# ls -l /dev |grep nvidia
+crw-rw-rw-  1 root root    245,   0 mar  9 01:28 nvidia-uvm
+crw-rw-rw-  1 root root    195,   0 mar  9 01:29 nvidia0
+crw-rw-rw-  1 root root    195, 255 mar  9 01:29 nvidiactl
+[/code]
+</div>
+	<div class="left">
+		<div class="profileInfo png">
+			<div class="profileAvatar">
+				<a href="https://devtalk.nvidia.com/member/1884316/"><img src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/profile-default-devtalk-84.png"></a>
+			</div>
+
+			<div class="profileName">
+				<a href="https://devtalk.nvidia.com/member/1884316/">matstegner</a>			</div>
+			
+						<div class="icons">
+				<a class="icon" href="https://devtalk.nvidia.com/member/1884316/" title="View Member Profile">
+					<i class="fa fa-user fa-lg"></i>
+				</a>
+				<a class="icon" href="javascript:MessageModal('1884316');" title="Send Private Message">
+                    <i class="fa fa-envelope fa-lg"></i>
+                </a>
+												<div class="clear"></div>
+			</div>
+				
+
+
+			
+
+			
+			
+			<div id="more_4829759" class="moreInfo">
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="text-arrow"><i class="fa fa-caret-left fa-3x"></i></div>
+		<div class="forumTextWrapper">
+									<div class="comment-commands-wrapper">
+				<div class="comment-commands">
+										                    										<div class="clear"></div>
+				</div>
+			</div>
+						<div class="forumText">
+Okay,<br>
+I have:<br>
+<pre class="prettyprint linenums" style=""><ol class="linenums"><li class="L0"><span class="pln">bash</span><span class="pun">-</span><span class="lit">4.3</span><span class="com"># ls -l /usr/bin/ |grep nvidia</span><br></li><li class="L1"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">1</span><span class="pln"> root   root      </span><span class="lit">23K</span><span class="pln"> feb </span><span class="lit">12</span><span class="pln"> </span><span class="lit">02</span><span class="pun">:</span><span class="lit">27</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">bug</span><span class="pun">-</span><span class="pln">report</span><span class="pun">.</span><span class="pln">sh</span><span class="pun">*</span><br></li><li class="L2"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">1</span><span class="pln"> root   root     </span><span class="lit">204K</span><span class="pln"> feb </span><span class="lit">12</span><span class="pln"> </span><span class="lit">02</span><span class="pun">:</span><span class="lit">27</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">debugdump</span><span class="pun">*</span><br></li><li class="L3"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">1</span><span class="pln"> root   root     </span><span class="lit">300K</span><span class="pln"> feb </span><span class="lit">12</span><span class="pln"> </span><span class="lit">02</span><span class="pun">:</span><span class="lit">27</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">installer</span><span class="pun">*</span><br></li><li class="L4"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">1</span><span class="pln"> root   root      </span><span class="lit">26K</span><span class="pln"> feb </span><span class="lit">12</span><span class="pln"> </span><span class="lit">02</span><span class="pun">:</span><span class="lit">28</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">modprobe</span><span class="pun">*</span><br></li><li class="L5"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">1</span><span class="pln"> root   root      </span><span class="lit">33K</span><span class="pln"> feb </span><span class="lit">12</span><span class="pln"> </span><span class="lit">02</span><span class="pun">:</span><span class="lit">29</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">persistenced</span><span class="pun">*</span><br></li><li class="L6"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">1</span><span class="pln"> root   root     </span><span class="lit">1</span><span class="pun">,</span><span class="lit">8M</span><span class="pln"> feb </span><span class="lit">12</span><span class="pln"> </span><span class="lit">02</span><span class="pun">:</span><span class="lit">28</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">settings</span><span class="pun">*</span><br></li><li class="L7"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">1</span><span class="pln"> root   root     </span><span class="lit">245K</span><span class="pln"> feb </span><span class="lit">12</span><span class="pln"> </span><span class="lit">02</span><span class="pun">:</span><span class="lit">27</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">smi</span><span class="pun">*</span><br></li><li class="L8"><span class="pln">lrwxrwxrwx   </span><span class="lit">1</span><span class="pln"> root   root       </span><span class="lit">16</span><span class="pln"> nov </span><span class="lit">16</span><span class="pln"> </span><span class="lit">19</span><span class="pun">:</span><span class="lit">12</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">uninstall </span><span class="pun">-&gt;</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">installer</span><span class="pun">*</span><br></li><li class="L9"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x   </span><span class="lit">1</span><span class="pln"> root   root     </span><span class="lit">170K</span><span class="pln"> feb </span><span class="lit">12</span><span class="pln"> </span><span class="lit">02</span><span class="pun">:</span><span class="lit">28</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">xconfig</span><span class="pun">*</span></li></ol></pre><br>
+<br>
+Do you see these three devices?:<br>
+<pre class="prettyprint linenums" style=""><ol class="linenums"><li class="L0"><span class="pln">bash</span><span class="pun">-</span><span class="lit">4.3</span><span class="com"># ls -l /dev |grep nvidia</span><br></li><li class="L1"><span class="pln">crw</span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> root root    </span><span class="lit">245</span><span class="pun">,</span><span class="pln">   </span><span class="lit">0</span><span class="pln"> mar  </span><span class="lit">9</span><span class="pln"> </span><span class="lit">01</span><span class="pun">:</span><span class="lit">28</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">uvm</span><br></li><li class="L2"><span class="pln">crw</span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> root root    </span><span class="lit">195</span><span class="pun">,</span><span class="pln">   </span><span class="lit">0</span><span class="pln"> mar  </span><span class="lit">9</span><span class="pln"> </span><span class="lit">01</span><span class="pun">:</span><span class="lit">29</span><span class="pln"> nvidia0</span><br></li><li class="L3"><span class="pln">crw</span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">rw</span><span class="pun">-</span><span class="pln">  </span><span class="lit">1</span><span class="pln"> root root    </span><span class="lit">195</span><span class="pun">,</span><span class="pln"> </span><span class="lit">255</span><span class="pln"> mar  </span><span class="lit">9</span><span class="pln"> </span><span class="lit">01</span><span class="pun">:</span><span class="lit">29</span><span class="pln"> nvidiactl</span></li></ol></pre>
+				<div class="attachments" style="display:none">
+
+					<fieldset>
+						<legend>Attachments</legend>
+											</fieldset>
+					<div class="attachment-loading"><p></p></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="forumBottom-wrapper">
+			<div class="forumBottom">
+				<div class="forumSig">
+										<p></p>
+										<p>				</p></div>
+				
+				
+
+			<div class="forumNumber png">
+							<a href="https://devtalk.nvidia.com/default/topic/922460/cuda-setup-and-installation/no-cuda-capable-device-is-detected/post/4829759/#4829759" title="Permalink" rel="nofollow">#4</a>
+			</div>
+
+				<div class="forumInfo">
+					Posted 03/09/2016 01:21 AM&nbsp;&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<!-- c: 4829769 -->
+<!--s-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var uploader = new qq.FileUploaderBasic({
+		// pass the dom node (ex. $(selector)[0] for jQuery users)
+		button: $('#comment_4829769 .icon-paperclip')[0],
+		// path to server-side upload script
+		debug: true,
+		action: '/ajax/default/upload-comment-attachment/4829769/',
+		onSubmit: function(id, fileName) { $('#comment_4829769 .attachment-loading').show(); $('#comment_4829769 .attachment-loading p').css({ 'display' : 'block', 'width' : '0px' }); $('#comment_4829769 .attachment-loading p').html(''); },
+		onProgress: function(id, fileName, loaded, total) { $('#comment_4829769 .attachment-loading p').width(((loaded/total)*100)+'%'); $('#comment_4829769 .attachment-loading p').html(Math.ceil(loaded/total*100) + '%'); },
+		onComplete: function(id, fileName, responseJSON) { 
+            $('#comment_4829769 .attachment-loading p').fadeOut(function() { 
+                $('#comment_4829769 .attachment-loading p').width('0'); 
+                $('#comment_4829769 .attachment-loading').hide(); 
+                if (responseJSON.success)
+                {
+                    $('#comment_4829769 .attachments fieldset').append('<p>[SCANNING... PLEASE WAIT] '+fileName+'<a class="remove-attachment" href="javascript:DeleteAttachment('+responseJSON.id+');">remove</a></p>'); 
+                    $('#comment_4829769 .attachments').show(); 
+                }
+            }); 
+        }
+	});
+	
+
+});
+</script>
+
+<a id="4829769" class="anchorLink"></a>
+<div id="comment_4829769" class="   forumComment odd">
+	<div class="raw-comment">No, I don't have the three devices that you listed. 
+This is what I have:
+[code]ls -l /usr/bin/ |grep nvidia
+lrwxrwxrwx  1 root   root          52 Mar  7 10:37 nvidia-bug-report.sh -&gt; /etc/alternatives/x86_64-linux-gnu_nvidia_bug_report*
+lrwxrwxrwx  1 root   root          58 Mar  7 10:37 nvidia-cuda-mps-control -&gt; /etc/alternatives/x86_64-linux-gnu_nvidia-cuda-mps-control*
+lrwxrwxrwx  1 root   root          57 Mar  7 10:37 nvidia-cuda-mps-server -&gt; /etc/alternatives/x86_64-linux-gnu_nvidia-cuda-mps-server*
+lrwxrwxrwx  1 root   root          51 Mar  7 10:37 nvidia-debugdump -&gt; /etc/alternatives/x86_64-linux-gnu_nvidia-debugdump*
+-rwxr-xr-x  1 root   root         270 Aug  4  2015 nvidia-detector*
+lrwxrwxrwx  1 root   root          54 Mar  7 10:37 nvidia-persistenced -&gt; /etc/alternatives/x86_64-linux-gnu_nvidia_persistenced*
+-rwxr-xr-x  1 root   root      204064 Apr 15  2015 nvidia-settings*
+lrwxrwxrwx  1 root   root          45 Mar  7 10:37 nvidia-smi -&gt; /etc/alternatives/x86_64-linux-gnu_nvidia_smi*
+lrwxrwxrwx  1 root   root          49 Mar  7 10:37 nvidia-xconfig -&gt; /etc/alternatives/x86_64-linux-gnu_nvidia_xconfig*
+-rwxr-xr-x  1 root   root          99 Nov 16 13:50 start-nvidia-persistenced*
+-rwxr-xr-x  1 root   root         109 Nov 16 13:50 stop-nvidia-persistenced*
+[/code]
+</div>
+	<div class="left">
+		<div class="profileInfo png">
+			<div class="profileAvatar">
+				<a href="https://devtalk.nvidia.com/member/2115066/"><img src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/profile-default-devtalk-84.png"></a>
+			</div>
+
+			<div class="profileName">
+				<a href="https://devtalk.nvidia.com/member/2115066/">rghamdi</a>			</div>
+			
+						<div class="icons">
+				<a class="icon" href="https://devtalk.nvidia.com/member/2115066/" title="View Member Profile">
+					<i class="fa fa-user fa-lg"></i>
+				</a>
+				<a class="icon" href="javascript:MessageModal('2115066');" title="Send Private Message">
+                    <i class="fa fa-envelope fa-lg"></i>
+                </a>
+												<div class="clear"></div>
+			</div>
+				
+
+
+			
+
+			
+			
+			<div id="more_4829769" class="moreInfo">
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="text-arrow"><i class="fa fa-caret-left fa-3x"></i></div>
+		<div class="forumTextWrapper">
+									<div class="comment-commands-wrapper">
+				<div class="comment-commands">
+										                    										<div class="clear"></div>
+				</div>
+			</div>
+						<div class="forumText">
+No, I don't have the three devices that you listed. <br>
+This is what I have:<br>
+<pre class="prettyprint linenums" style=""><ol class="linenums"><li class="L0"><span class="pln">ls </span><span class="pun">-</span><span class="pln">l </span><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="pln">bin</span><span class="pun">/</span><span class="pln"> </span><span class="pun">|</span><span class="pln">grep nvidia</span><br></li><li class="L1"><span class="pln">lrwxrwxrwx  </span><span class="lit">1</span><span class="pln"> root   root          </span><span class="lit">52</span><span class="pln"> </span><span class="typ">Mar</span><span class="pln">  </span><span class="lit">7</span><span class="pln"> </span><span class="lit">10</span><span class="pun">:</span><span class="lit">37</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">bug</span><span class="pun">-</span><span class="pln">report</span><span class="pun">.</span><span class="pln">sh </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="str">/etc/</span><span class="pln">alternatives</span><span class="pun">/</span><span class="pln">x86_64</span><span class="pun">-</span><span class="pln">linux</span><span class="pun">-</span><span class="pln">gnu_nvidia_bug_report</span><span class="pun">*</span><br></li><li class="L2"><span class="pln">lrwxrwxrwx  </span><span class="lit">1</span><span class="pln"> root   root          </span><span class="lit">58</span><span class="pln"> </span><span class="typ">Mar</span><span class="pln">  </span><span class="lit">7</span><span class="pln"> </span><span class="lit">10</span><span class="pun">:</span><span class="lit">37</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">cuda</span><span class="pun">-</span><span class="pln">mps</span><span class="pun">-</span><span class="pln">control </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="str">/etc/</span><span class="pln">alternatives</span><span class="pun">/</span><span class="pln">x86_64</span><span class="pun">-</span><span class="pln">linux</span><span class="pun">-</span><span class="pln">gnu_nvidia</span><span class="pun">-</span><span class="pln">cuda</span><span class="pun">-</span><span class="pln">mps</span><span class="pun">-</span><span class="pln">control</span><span class="pun">*</span><br></li><li class="L3"><span class="pln">lrwxrwxrwx  </span><span class="lit">1</span><span class="pln"> root   root          </span><span class="lit">57</span><span class="pln"> </span><span class="typ">Mar</span><span class="pln">  </span><span class="lit">7</span><span class="pln"> </span><span class="lit">10</span><span class="pun">:</span><span class="lit">37</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">cuda</span><span class="pun">-</span><span class="pln">mps</span><span class="pun">-</span><span class="pln">server </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="str">/etc/</span><span class="pln">alternatives</span><span class="pun">/</span><span class="pln">x86_64</span><span class="pun">-</span><span class="pln">linux</span><span class="pun">-</span><span class="pln">gnu_nvidia</span><span class="pun">-</span><span class="pln">cuda</span><span class="pun">-</span><span class="pln">mps</span><span class="pun">-</span><span class="pln">server</span><span class="pun">*</span><br></li><li class="L4"><span class="pln">lrwxrwxrwx  </span><span class="lit">1</span><span class="pln"> root   root          </span><span class="lit">51</span><span class="pln"> </span><span class="typ">Mar</span><span class="pln">  </span><span class="lit">7</span><span class="pln"> </span><span class="lit">10</span><span class="pun">:</span><span class="lit">37</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">debugdump </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="str">/etc/</span><span class="pln">alternatives</span><span class="pun">/</span><span class="pln">x86_64</span><span class="pun">-</span><span class="pln">linux</span><span class="pun">-</span><span class="pln">gnu_nvidia</span><span class="pun">-</span><span class="pln">debugdump</span><span class="pun">*</span><br></li><li class="L5"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x  </span><span class="lit">1</span><span class="pln"> root   root         </span><span class="lit">270</span><span class="pln"> </span><span class="typ">Aug</span><span class="pln">  </span><span class="lit">4</span><span class="pln">  </span><span class="lit">2015</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">detector</span><span class="pun">*</span><br></li><li class="L6"><span class="pln">lrwxrwxrwx  </span><span class="lit">1</span><span class="pln"> root   root          </span><span class="lit">54</span><span class="pln"> </span><span class="typ">Mar</span><span class="pln">  </span><span class="lit">7</span><span class="pln"> </span><span class="lit">10</span><span class="pun">:</span><span class="lit">37</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">persistenced </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="str">/etc/</span><span class="pln">alternatives</span><span class="pun">/</span><span class="pln">x86_64</span><span class="pun">-</span><span class="pln">linux</span><span class="pun">-</span><span class="pln">gnu_nvidia_persistenced</span><span class="pun">*</span><br></li><li class="L7"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x  </span><span class="lit">1</span><span class="pln"> root   root      </span><span class="lit">204064</span><span class="pln"> </span><span class="typ">Apr</span><span class="pln"> </span><span class="lit">15</span><span class="pln">  </span><span class="lit">2015</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">settings</span><span class="pun">*</span><br></li><li class="L8"><span class="pln">lrwxrwxrwx  </span><span class="lit">1</span><span class="pln"> root   root          </span><span class="lit">45</span><span class="pln"> </span><span class="typ">Mar</span><span class="pln">  </span><span class="lit">7</span><span class="pln"> </span><span class="lit">10</span><span class="pun">:</span><span class="lit">37</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">smi </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="str">/etc/</span><span class="pln">alternatives</span><span class="pun">/</span><span class="pln">x86_64</span><span class="pun">-</span><span class="pln">linux</span><span class="pun">-</span><span class="pln">gnu_nvidia_smi</span><span class="pun">*</span><br></li><li class="L9"><span class="pln">lrwxrwxrwx  </span><span class="lit">1</span><span class="pln"> root   root          </span><span class="lit">49</span><span class="pln"> </span><span class="typ">Mar</span><span class="pln">  </span><span class="lit">7</span><span class="pln"> </span><span class="lit">10</span><span class="pun">:</span><span class="lit">37</span><span class="pln"> nvidia</span><span class="pun">-</span><span class="pln">xconfig </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="str">/etc/</span><span class="pln">alternatives</span><span class="pun">/</span><span class="pln">x86_64</span><span class="pun">-</span><span class="pln">linux</span><span class="pun">-</span><span class="pln">gnu_nvidia_xconfig</span><span class="pun">*</span><br></li><li class="L0"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x  </span><span class="lit">1</span><span class="pln"> root   root          </span><span class="lit">99</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln"> </span><span class="lit">16</span><span class="pln"> </span><span class="lit">13</span><span class="pun">:</span><span class="lit">50</span><span class="pln"> start</span><span class="pun">-</span><span class="pln">nvidia</span><span class="pun">-</span><span class="pln">persistenced</span><span class="pun">*</span><br></li><li class="L1"><span class="pun">-</span><span class="pln">rwxr</span><span class="pun">-</span><span class="pln">xr</span><span class="pun">-</span><span class="pln">x  </span><span class="lit">1</span><span class="pln"> root   root         </span><span class="lit">109</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln"> </span><span class="lit">16</span><span class="pln"> </span><span class="lit">13</span><span class="pun">:</span><span class="lit">50</span><span class="pln"> stop</span><span class="pun">-</span><span class="pln">nvidia</span><span class="pun">-</span><span class="pln">persistenced</span><span class="pun">*</span></li></ol></pre>
+				<div class="attachments" style="display:none">
+
+					<fieldset>
+						<legend>Attachments</legend>
+											</fieldset>
+					<div class="attachment-loading"><p></p></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="forumBottom-wrapper">
+			<div class="forumBottom">
+				<div class="forumSig">
+										<p></p>
+										<p>				</p></div>
+				
+				
+
+			<div class="forumNumber png">
+							<a href="https://devtalk.nvidia.com/default/topic/922460/cuda-setup-and-installation/no-cuda-capable-device-is-detected/post/4829769/#4829769" title="Permalink" rel="nofollow">#5</a>
+			</div>
+
+				<div class="forumInfo">
+					Posted 03/09/2016 01:29 AM&nbsp;&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<!-- c: 4830627 -->
+<!--s-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var uploader = new qq.FileUploaderBasic({
+		// pass the dom node (ex. $(selector)[0] for jQuery users)
+		button: $('#comment_4830627 .icon-paperclip')[0],
+		// path to server-side upload script
+		debug: true,
+		action: '/ajax/default/upload-comment-attachment/4830627/',
+		onSubmit: function(id, fileName) { $('#comment_4830627 .attachment-loading').show(); $('#comment_4830627 .attachment-loading p').css({ 'display' : 'block', 'width' : '0px' }); $('#comment_4830627 .attachment-loading p').html(''); },
+		onProgress: function(id, fileName, loaded, total) { $('#comment_4830627 .attachment-loading p').width(((loaded/total)*100)+'%'); $('#comment_4830627 .attachment-loading p').html(Math.ceil(loaded/total*100) + '%'); },
+		onComplete: function(id, fileName, responseJSON) { 
+            $('#comment_4830627 .attachment-loading p').fadeOut(function() { 
+                $('#comment_4830627 .attachment-loading p').width('0'); 
+                $('#comment_4830627 .attachment-loading').hide(); 
+                if (responseJSON.success)
+                {
+                    $('#comment_4830627 .attachments fieldset').append('<p>[SCANNING... PLEASE WAIT] '+fileName+'<a class="remove-attachment" href="javascript:DeleteAttachment('+responseJSON.id+');">remove</a></p>'); 
+                    $('#comment_4830627 .attachments').show(); 
+                }
+            }); 
+        }
+	});
+	
+
+});
+</script>
+
+<a id="4830627" class="anchorLink"></a>
+<div id="comment_4830627" class="   forumComment even">
+	<div class="raw-comment">The administrator installed another version of the driver and it is working now. I can see the nvidia-modprobe. I guess the problem was with the driver version. 
+
+The current driver:
+[code]cat /proc/driver/nvidia/version
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  352.79  Wed Jan 13 16:17:53 PST 2016
+GCC version:  gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.1) 
+[/code]
+
+The previous driver:
+[code]cat /proc/driver/nvidia/version
+NVRM version: NVIDIA UNIX x86_64 Kernel Module 352.63 Sat Nov 7 21:25:42 PST 2015
+GCC version: gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.1) [/code]
+
+Thanks
+Rami
+</div>
+	<div class="left">
+		<div class="profileInfo png">
+			<div class="profileAvatar">
+				<a href="https://devtalk.nvidia.com/member/2115066/"><img src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/profile-default-devtalk-84.png"></a>
+			</div>
+
+			<div class="profileName">
+				<a href="https://devtalk.nvidia.com/member/2115066/">rghamdi</a>			</div>
+			
+						<div class="icons">
+				<a class="icon" href="https://devtalk.nvidia.com/member/2115066/" title="View Member Profile">
+					<i class="fa fa-user fa-lg"></i>
+				</a>
+				<a class="icon" href="javascript:MessageModal('2115066');" title="Send Private Message">
+                    <i class="fa fa-envelope fa-lg"></i>
+                </a>
+												<div class="clear"></div>
+			</div>
+				
+
+
+			
+
+			
+			
+			<div id="more_4830627" class="moreInfo">
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="text-arrow"><i class="fa fa-caret-left fa-3x"></i></div>
+		<div class="forumTextWrapper">
+									<div class="comment-commands-wrapper">
+				<div class="comment-commands">
+										                    										<div class="clear"></div>
+				</div>
+			</div>
+						<div class="forumText">
+The administrator installed another version of the driver and it is working now. I can see the nvidia-modprobe. I guess the problem was with the driver version. <br>
+<br>
+The current driver:<br>
+<pre class="prettyprint linenums" style=""><ol class="linenums"><li class="L0"><span class="pln">cat </span><span class="pun">/</span><span class="pln">proc</span><span class="pun">/</span><span class="pln">driver</span><span class="pun">/</span><span class="pln">nvidia</span><span class="pun">/</span><span class="pln">version</span><br></li><li class="L1"><span class="pln">NVRM version</span><span class="pun">:</span><span class="pln"> NVIDIA UNIX x86_64 </span><span class="typ">Kernel</span><span class="pln"> </span><span class="typ">Module</span><span class="pln">  </span><span class="lit">352.79</span><span class="pln">  </span><span class="typ">Wed</span><span class="pln"> </span><span class="typ">Jan</span><span class="pln"> </span><span class="lit">13</span><span class="pln"> </span><span class="lit">16</span><span class="pun">:</span><span class="lit">17</span><span class="pun">:</span><span class="lit">53</span><span class="pln"> PST </span><span class="lit">2016</span><br></li><li class="L2"><span class="pln">GCC version</span><span class="pun">:</span><span class="pln">  gcc version </span><span class="lit">4.8</span><span class="pun">.</span><span class="lit">4</span><span class="pln"> </span><span class="pun">(</span><span class="typ">Ubuntu</span><span class="pln"> </span><span class="lit">4.8</span><span class="pun">.</span><span class="lit">4</span><span class="pun">-</span><span class="lit">2ubuntu1</span><span class="pun">~</span><span class="lit">14.04</span><span class="pun">.</span><span class="lit">1</span><span class="pun">)</span></li></ol></pre><br>
+<br>
+The previous driver:<br>
+<pre class="prettyprint linenums" style=""><ol class="linenums"><li class="L0"><span class="pln">cat </span><span class="pun">/</span><span class="pln">proc</span><span class="pun">/</span><span class="pln">driver</span><span class="pun">/</span><span class="pln">nvidia</span><span class="pun">/</span><span class="pln">version</span><br></li><li class="L1"><span class="pln">NVRM version</span><span class="pun">:</span><span class="pln"> NVIDIA UNIX x86_64 </span><span class="typ">Kernel</span><span class="pln"> </span><span class="typ">Module</span><span class="pln"> </span><span class="lit">352.63</span><span class="pln"> </span><span class="typ">Sat</span><span class="pln"> </span><span class="typ">Nov</span><span class="pln"> </span><span class="lit">7</span><span class="pln"> </span><span class="lit">21</span><span class="pun">:</span><span class="lit">25</span><span class="pun">:</span><span class="lit">42</span><span class="pln"> PST </span><span class="lit">2015</span><br></li><li class="L2"><span class="pln">GCC version</span><span class="pun">:</span><span class="pln"> gcc version </span><span class="lit">4.8</span><span class="pun">.</span><span class="lit">4</span><span class="pln"> </span><span class="pun">(</span><span class="typ">Ubuntu</span><span class="pln"> </span><span class="lit">4.8</span><span class="pun">.</span><span class="lit">4</span><span class="pun">-</span><span class="lit">2ubuntu1</span><span class="pun">~</span><span class="lit">14.04</span><span class="pun">.</span><span class="lit">1</span><span class="pun">)</span></li></ol></pre><br>
+<br>
+Thanks<br>
+Rami
+				<div class="attachments" style="display:none">
+
+					<fieldset>
+						<legend>Attachments</legend>
+											</fieldset>
+					<div class="attachment-loading"><p></p></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="forumBottom-wrapper">
+			<div class="forumBottom">
+				<div class="forumSig">
+										<p></p>
+										<p>				</p></div>
+				
+				
+
+			<div class="forumNumber png">
+							<a href="https://devtalk.nvidia.com/default/topic/922460/cuda-setup-and-installation/no-cuda-capable-device-is-detected/post/4830627/#4830627" title="Permalink" rel="nofollow">#6</a>
+			</div>
+
+				<div class="forumInfo">
+					Posted 03/09/2016 09:37 PM&nbsp;&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<!-- c: 4922530 -->
+<!--s-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var uploader = new qq.FileUploaderBasic({
+		// pass the dom node (ex. $(selector)[0] for jQuery users)
+		button: $('#comment_4922530 .icon-paperclip')[0],
+		// path to server-side upload script
+		debug: true,
+		action: '/ajax/default/upload-comment-attachment/4922530/',
+		onSubmit: function(id, fileName) { $('#comment_4922530 .attachment-loading').show(); $('#comment_4922530 .attachment-loading p').css({ 'display' : 'block', 'width' : '0px' }); $('#comment_4922530 .attachment-loading p').html(''); },
+		onProgress: function(id, fileName, loaded, total) { $('#comment_4922530 .attachment-loading p').width(((loaded/total)*100)+'%'); $('#comment_4922530 .attachment-loading p').html(Math.ceil(loaded/total*100) + '%'); },
+		onComplete: function(id, fileName, responseJSON) { 
+            $('#comment_4922530 .attachment-loading p').fadeOut(function() { 
+                $('#comment_4922530 .attachment-loading p').width('0'); 
+                $('#comment_4922530 .attachment-loading').hide(); 
+                if (responseJSON.success)
+                {
+                    $('#comment_4922530 .attachments fieldset').append('<p>[SCANNING... PLEASE WAIT] '+fileName+'<a class="remove-attachment" href="javascript:DeleteAttachment('+responseJSON.id+');">remove</a></p>'); 
+                    $('#comment_4922530 .attachments').show(); 
+                }
+            }); 
+        }
+	});
+	
+
+});
+</script>
+
+<a id="4922530" class="anchorLink"></a>
+<div id="comment_4922530" class="   forumComment odd">
+	<div class="raw-comment">Hi, I am having the same issue with deviceQuery under Cuda 6.5,  although I have the 352.79 driver.
+
+When ran with root privileges, deviceQuery Fails:
+
+./deviceQuery Starting...
+
+ CUDA Device Query (Runtime API) version (CUDART static linking)
+
+cudaGetDeviceCount returned 38
+-&gt; no CUDA-capable device is detected
+Result = FAIL
+
+
+My NVIDIA driver:
+
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  352.79  Wed Jan 13 16:17:53 PST 2016
+GCC version:  gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.1) 
+
+
+Which version of Cuda works best with this driver? I was last able to run code that used Cuda successfully in early March 2016.
+
+Thank you!
+
+Octavia
+
+
+</div>
+	<div class="left">
+		<div class="profileInfo png">
+			<div class="profileAvatar">
+				<a href="https://devtalk.nvidia.com/member/2134974/"><img src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/profile-default-devtalk-84.png"></a>
+			</div>
+
+			<div class="profileName">
+				<a href="https://devtalk.nvidia.com/member/2134974/">OBane</a>			</div>
+			
+						<div class="icons">
+				<a class="icon" href="https://devtalk.nvidia.com/member/2134974/" title="View Member Profile">
+					<i class="fa fa-user fa-lg"></i>
+				</a>
+				<a class="icon" href="javascript:MessageModal('2134974');" title="Send Private Message">
+                    <i class="fa fa-envelope fa-lg"></i>
+                </a>
+												<div class="clear"></div>
+			</div>
+				
+
+
+			
+
+			
+			
+			<div id="more_4922530" class="moreInfo">
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="text-arrow"><i class="fa fa-caret-left fa-3x"></i></div>
+		<div class="forumTextWrapper">
+									<div class="comment-commands-wrapper">
+				<div class="comment-commands">
+										                    										<div class="clear"></div>
+				</div>
+			</div>
+						<div class="forumText">
+Hi, I am having the same issue with deviceQuery under Cuda 6.5,  although I have the 352.79 driver.<br>
+<br>
+When ran with root privileges, deviceQuery Fails:<br>
+<br>
+./deviceQuery Starting...<br>
+<br>
+ CUDA Device Query (Runtime API) version (CUDART static linking)<br>
+<br>
+cudaGetDeviceCount returned 38<br>
+-&gt; no CUDA-capable device is detected<br>
+Result = FAIL<br>
+<br>
+<br>
+My NVIDIA driver:<br>
+<br>
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  352.79  Wed Jan 13 16:17:53 PST 2016<br>
+GCC version:  gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.1) <br>
+<br>
+<br>
+Which version of Cuda works best with this driver? I was last able to run code that used Cuda successfully in early March 2016.<br>
+<br>
+Thank you!<br>
+<br>
+Octavia
+				<div class="attachments" style="display:none">
+
+					<fieldset>
+						<legend>Attachments</legend>
+											</fieldset>
+					<div class="attachment-loading"><p></p></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="forumBottom-wrapper">
+			<div class="forumBottom">
+				<div class="forumSig">
+										<p></p>
+										<p>				</p></div>
+				
+				
+
+			<div class="forumNumber png">
+							<a href="https://devtalk.nvidia.com/default/topic/922460/cuda-setup-and-installation/no-cuda-capable-device-is-detected/post/4922530/#4922530" title="Permalink" rel="nofollow">#7</a>
+			</div>
+
+				<div class="forumInfo">
+					Posted 07/06/2016 02:26 PM&nbsp;&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<a href="javascript:window.scrollTo(0,0);"><div class="scroll-to-top">Scroll To Top</div></a>
+
+<script type="text/javascript">
+function MessageModal(user)
+{
+	$.getJSON('/ajax/account/get-message-info/'+user+'/', function(data) {
+		$('.message-to .username').html('<a href="/member/'+data.user+'/">'+data.username+'</a>');
+		$('input[name=to]').val(data.user);
+		$('.message-modal').modal();
+				$('.message-title input').blur();
+				
+				$('.message-modal textarea').append("\r\n\r\n\r\n\r\n"+'PM Sent From: http://devtalk.nvidia.com/default/topic/922460/no-cuda-capable-device-is-detected/');
+			});
+}
+
+function SendMessage()
+{
+
+	$("#send-private-message").attr('onClick', '');
+
+
+
+	$.post('/ajax/account/send-message/', $("#message-form").serialize(), function(data) {
+		if (data.error)
+		{
+			alert(data.error);
+			
+		}
+		else
+		{
+			window.location='/member/'+data.user+'/#messages';
+			$.modal.close();
+		}
+	}, 'json');
+	
+	$("#send-private-message").attr('onClick', 'SendMessage()'); 
+}
+</script>
+
+    <div class="modal-wrapper message-modal widget widget-75">
+                <div class="login-cover">
+            <p>You must <a href="javascript:AuthorizeModal('login');">log in</a> to send a PM.</p>
+        </div>
+        
+        <div class="body footer">
+            <div class="pad">
+            <h1>New Private Message</h1>
+            <form id="message-form">
+                <div class="message-to">To: <span class="username"></span></div>
+                <input name="to" value="" type="hidden">
+                <div class="message-title">
+                    <input name="title" placeholder="Message subject" type="text">
+                </div>
+                <div class="message-content textarea-wrapper">
+                    <div class="textarea-toolbar">
+	<div class="icon icon-bold"><i class="fa fa-bold"></i></div>
+	<div class="icon icon-italic"><i class="fa fa-italic"></i></div>
+	<div class="icon icon-underline"><i class="fa fa-underline"></i></div>
+	<div class="icon icon-strike"><i class="fa fa-strikethrough"></i></div>
+	<div class="icon icon-size"><i class="fa fa-font-height"></i>
+	<select name="fontsizepicker" class="fontsizepicker" id="fontsizepicker" style="display: none;">
+	 <option value="11px" selected="selected">Small</option>
+	 <option value="13px">Normal</option>
+	 <option value="15px">Medium</option>
+	 <option value="17px">Large</option>
+	 <option value="20px">Extra Large</option>
+	</select><span class="simplefontsizepicker icon" title="Small" style="font-size: 11px;" role="button" tabindex="0"><i class="fa fa-text-height"></i></span>
+	</div>
+	<div class="icon icon-color">
+	<select name="colorpicker" class="colorpicker" id="colorpicker" style="display: none;">
+	 <option value="#efefef" selected="selected">White</option>
+	 <option value="#999999">Gray</option>
+	 <option value="#76b900">Green</option>
+	 <option value="darkOrange">Orange</option>
+	</select><span class="simplecolorpicker icon" title="White" style="background-color: #efefef;" role="button" tabindex="0"></span>
+	</div>
+	<div class="separator"></div>
+	<div class="icon icon-left"><i class="fa fa-align-left"></i></div>
+	<div class="icon icon-center"><i class="fa fa-align-center"></i></div>
+	<div class="icon icon-right"><i class="fa fa-align-right"></i></div>
+	<div class="icon icon-justify"><i class="fa fa-align-justify"></i></div>
+	<div class="separator"></div>
+	<div class="icon icon-olist"><i class="fa fa-list-ol"></i></div>
+	<div class="icon icon-ulist"><i class="fa fa-list-ul"></i></div>
+	<div class="icon icon-listitem"><i class="fa fa-circle"></i></div>
+	<div class="separator"></div>
+	<div class="icon icon-link"><i class="fa fa-link"></i></div>
+	<div class="icon icon-image"><i class="fa fa-picture-o"></i></div>
+	<div class="icon icon-code"><i class="fa fa-code"></i></div>
+	<div class="separator"></div>
+	<div class="clear"></div>
+</div>
+                                        <textarea name="content" id="content"></textarea>					<input name="X-CSRFTOKEN" id="X-CSRFTOKEN" value="298f5fb338cc93bad228be9c680c53bd87234af438f67a0ba8fcd99084425270" type="hidden">                </div>
+				<div class="clear"></div>
+                <div class="right">
+                    <div class="siteButton" id="send-private-message" onclick="SendMessage();"><a href="javascript:void(0);">Send Message</a></div>
+                    <div class="siteButton inactive"><a href="javascript:$.modal.close();">Close</a></div>
+                </div>
+                <div class="clear"></div>
+		    </form>
+            </div>
+        </div>
+	</div>
+			<div class="clear"></div>
+		</div>	
+			<div class="thread-reply">
+			<a name="reply"></a>
+			<!--<p class="reply-to-thread">Reply To This Thread</p>-->
+			
+
+<div class="widget widget-100">
+    <div class="header">
+        <p>Add Reply</p>
+    </div>
+    <div class="body footer">
+        <div class="submitComment">
+		<div class="login-cover">
+		<p>Please <a href="javascript:AuthorizeModal('login');">Login</a> | <a href="https://devtalk.nvidia.com/account/register/">Register</a> to add a comment.</p>
+	</div>
+		<form name="new-reply" id="newReplyForm" enctype="application/x-www-form-urlencoded" action="/cmd/account/new-comment/" method="post">
+		<div class="textarea-wrapper">
+		<!--CONTENT:  -->
+			<div class="textarea-toolbar">
+	<div class="icon icon-bold"><i class="fa fa-bold"></i></div>
+	<div class="icon icon-italic"><i class="fa fa-italic"></i></div>
+	<div class="icon icon-underline"><i class="fa fa-underline"></i></div>
+	<div class="icon icon-strike"><i class="fa fa-strikethrough"></i></div>
+	<div class="icon icon-size"><i class="fa fa-font-height"></i>
+	<select name="fontsizepicker" class="fontsizepicker" id="fontsizepicker" style="display: none;">
+	 <option value="11px" selected="selected">Small</option>
+	 <option value="13px">Normal</option>
+	 <option value="15px">Medium</option>
+	 <option value="17px">Large</option>
+	 <option value="20px">Extra Large</option>
+	</select><span class="simplefontsizepicker icon" title="Small" style="font-size: 11px;" role="button" tabindex="0"><i class="fa fa-text-height"></i></span>
+	</div>
+	<div class="icon icon-color">
+	<select name="colorpicker" class="colorpicker" id="colorpicker" style="display: none;">
+	 <option value="#efefef" selected="selected">White</option>
+	 <option value="#999999">Gray</option>
+	 <option value="#76b900">Green</option>
+	 <option value="darkOrange">Orange</option>
+	</select><span class="simplecolorpicker icon" title="White" style="background-color: #efefef;" role="button" tabindex="0"></span>
+	</div>
+	<div class="separator"></div>
+	<div class="icon icon-left"><i class="fa fa-align-left"></i></div>
+	<div class="icon icon-center"><i class="fa fa-align-center"></i></div>
+	<div class="icon icon-right"><i class="fa fa-align-right"></i></div>
+	<div class="icon icon-justify"><i class="fa fa-align-justify"></i></div>
+	<div class="separator"></div>
+	<div class="icon icon-olist"><i class="fa fa-list-ol"></i></div>
+	<div class="icon icon-ulist"><i class="fa fa-list-ul"></i></div>
+	<div class="icon icon-listitem"><i class="fa fa-circle"></i></div>
+	<div class="separator"></div>
+	<div class="icon icon-link"><i class="fa fa-link"></i></div>
+	<div class="icon icon-image"><i class="fa fa-picture-o"></i></div>
+	<div class="icon icon-code"><i class="fa fa-code"></i></div>
+	<div class="separator"></div>
+	<div class="clear"></div>
+</div>						<textarea name="content" id="topicReply"></textarea>            <div class="clear"></div>
+			            <div class="pad right">
+                <label for="notification-subscribe"><input name="notification-subscribe" value="1" id="notification-subscribe" type="checkbox"> Receive email notifications when someone replies to this topic</label>
+            </div>
+						<div class="clear"></div>
+			<div class="siteButton inactive" onclick="$(this).attr('onClick', '');$('#newReplyForm').submit();"><a href="javascript:void();"><i class="fa fa-reply"></i> Reply</a></div>
+			<div class="siteButton inactive preview-comment"><a href="javascript:void(0);"><span><i class="fa fa-eye"></i> Preview</span></a></div>
+		</div>
+		<input name="object" id="object" value="forum_topic" type="hidden">
+		<input name="object_id" id="object_id" value="922460" type="hidden">
+		<input name="return_url" id="return_url" value="/default/topic/922460/no-cuda-capable-device-is-detected/" type="hidden">
+		<div class="clear"></div>
+		<input name="X-CSRFTOKEN" id="X-CSRFTOKEN" value="298f5fb338cc93bad228be9c680c53bd87234af438f67a0ba8fcd99084425270" type="hidden">	</form>
+</div>
+    </div>
+</div>
+<div class="clear"></div>		</div>
+			<div class="topic-footer"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+function PollModal(e)
+{
+	$('#poll-tool').modal();
+}
+
+$(document).on('click', '.poll-option .siteButton.new', function() {
+	$(this).removeClass('new').addClass('remove').find('a').html('-');
+	
+	var clone = $('#poll-tool .poll-option.template').clone();
+	$(clone).removeClass('template');
+	$('#poll-tool .poll-options').append(clone);
+	$('#poll-tool .poll-options input[type=textbox]:last').focus();
+	
+	$("#simplemodal-container").css('height', 'auto'); 
+	$(window).trigger('resize.simplemodal');
+});
+
+$(document).on('click', '.poll-option .siteButton.remove', function() {		
+	$(this).parents('#poll-tool .poll-option').fadeOut(function() {
+		$(this).remove();
+		$('#poll-tool .poll-options input[type=textbox]:last').focus();
+					
+		$("#simplemodal-container").css('height', 'auto'); 
+		$(window).trigger('resize.simplemodal');
+	});
+});
+
+$(document).on('focus', 'input[name=poll-question]', function() {
+	if (this.value == 'Poll Title ...')
+	{
+		this.value = '';
+		$(this).removeClass('inactive');
+	}
+});
+
+$(document).on('blur', 'input[name=poll-question]', function() {
+	if (this.value == '')
+	{
+		this.value = 'Poll Title ...';
+		$(this).addClass('inactive');
+	}
+});
+</script>
+
+<div id="poll-tool" class="modal-wrapper widget-50 widget">
+	<div class="body footer">
+		<div class="pad">
+			<h1>Add Poll</h1>
+			<form action="/cmd/poll/add-poll/" id="poll-tool-form" method="post">
+			<input name="X-CSRFTOKEN" id="X-CSRFTOKEN" value="298f5fb338cc93bad228be9c680c53bd87234af438f67a0ba8fcd99084425270" type="hidden">			<input name="redirect-url" value="devtalk.nvidia.com/default/topic/922460/no-cuda-capable-device-is-detected/" type="hidden">
+			<input name="poll-object" value="xForumTopic" type="hidden">
+			<input name="poll-objectId" value="922460" type="hidden">
+			<input name="poll-access" value="users" type="hidden">
+			<input name="poll-url" value="/default/topic/922460/no-cuda-capable-device-is-detected/" type="hidden">
+			<input name="regions[]" value="1" type="hidden">
+						<div class="poll-details">
+				<div class="poll-name">
+					<input class="inactive" name="poll-question" value="Poll Title ..." type="textbox">
+				</div>
+				<div class="poll-options row-wrapper">
+					<div class="poll-option template row">
+						<div class="option-title"><input name="poll-options[]" type="textbox"></div>
+						<div class="siteButton new"><a href="javascript:void(0);">+</a></div>
+						<div class="clear"></div>
+					</div>
+					<div class="poll-option row">
+						<div class="option-title"><input name="poll-options[]" type="textbox"></div>
+						<div class="siteButton remove"><a href="javascript:void(0);">-</a></div>
+						<div class="clear"></div>
+					</div>
+					<div class="poll-option row">
+						<div class="option-title"><input name="poll-options[]" type="textbox"></div>
+						<div class="siteButton new"><a href="javascript:void(0);">+</a></div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="siteButton" onclick="$('#poll-tool-form').submit();"><a href="javascript:void(0);"><span>Add Poll</span></a></div>
+				<div class="siteButton inactive"><a href="javascript:$.modal.close();"><span>Close</span></a></div>
+			</div>
+			<div class="clear"></div>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+var _vote_lock = false;
+
+function pollCastVote()
+{
+
+	if (!$("input[name='poll_vote']:checked").val())
+	{
+		alert("Please select a value before voting");
+		return;
+	}
+
+    if(_vote_lock)
+    {
+        return;
+    }
+
+    _vote_lock = true;
+    $('#btnVote a').html('Casting Vote...');
+    
+
+	
+    var _vote = $("input[name='poll_vote']:checked").val();
+    var _topic = '922460';
+
+	var csrfKey = $("#csrf").data('key');
+	var csrfToken = $("#csrf").data('token');
+
+	$.post('/cmd/default/cast-vote/', { vote: _vote, topic: _topic, [csrfKey]: csrfToken }, function(_html){
+        if(_html <= 0)
+        {
+            alert('There was an error casting your vote. Please reload/refresh this page.');
+			$('#btnVote a').html('Vote');
+            return;
+        }
+
+        pollLoadResults();
+
+    });
+}
+
+function pollLoadResults()
+{
+    var _url = '/default/get-poll-results//';
+    $.get(_url, function(_html){
+        $('.topic-poll').html(_html);
+    });
+}
+</script>
+
+
+<style type="text/css">
+#comment-report-modal .modal-content { text-align: center; }
+#comment-report-modal .modal-content .textarea-wrapper { width: 300px; float: none; }
+#comment-report-modal .modal-content textarea { width: 300px; height: 100px; margin: 0 auto; min-height: 0px; }
+#comment-report-modal .modal-content select { width: 300px; margin: 0 auto 5px auto; text-transform: capitalize; }
+#comment-report-modal .modal-content .report-description { width: 300px; margin: 0 auto; text-align: left; font-weight: normal; }
+</style>
+
+<div id="comment-report-modal" class="modal-wrapper widget widget-50">
+	<div class="body footer">
+		<div class="pad">
+			<h1>Report Comment</h1>
+			<div class="modal-content">
+				<p class="report-description">Type</p>
+				<select name="type" id="type"><option value="spam" selected="selected">spam</option><option value="offensive">offensive</option><option value="advertising">advertising</option><option value="other">other</option></select>				<p class="report-description">Reason</p>
+				<div class="textarea-wrapper">
+					<textarea id="report-reason" class="report-reason"></textarea>
+				</div>
+				<input id="report-comment-id" value="" type="hidden">
+				<br>
+				<div class="right">
+					<div class="siteButton" onclick="SubmitCommentReport();"><a href="javascript:void(0)"><span>Submit</span></a></div>
+					<div class="siteButton inactive" onclick="$.modal.close();"><a href="javascript:void(0)"><span>Close</span></a></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</div><script type="text/javascript">
+    $(document).on('click','.siteButton.notification-subscribe',function()
+    {
+
+                AuthorizeModal('login');
+        
+        return false;
+
+    });
+
+    $(document).on('click','.siteButton.notification-delete',function()
+    {
+
+                AuthorizeModal('login');
+        
+        return false;
+
+    });
+
+
+</script>			<div class="clear"></div>
+
+			<div class="bottomBar"></div> 
+		</div> 
+
+	</div>
+
+
+
+
+                <div id="footer">
+
+                <div id="footerPad">
+                    <div class="footer-section">
+                        <div class="top">
+                            <div class="logo-white"><a href="https://developer.nvidia.com/"></a></div>
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="https://developer.nvidia.com/accelerated-computing">COMPUTEWORKS</a></li>
+                            <li>
+                                <a href="https://developer.nvidia.com/gameworks">GAMEWORKS</a>
+                            </li>
+                            <li>
+                                <a href="https://developer.nvidia.com/embedded-computing">JETPACK</a></li>
+                            <li>
+                                <a href="https://developer.nvidia.com/designworks">DESIGNWORKS</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <div class="top">
+                            GET STARTED
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="https://developer.nvidia.com/about-cuda">About
+                                    CUDA</a></li>
+                            <li>
+                                <a href="https://developer.nvidia.com/get-started-parallel-computing">Parallel
+                                    Computing</a></li>
+                            <li>
+                                <a href="https://developer.nvidia.com/cuda-toolkit">CUDA
+                                    Toolkit</a></li>
+                            <li>
+                                <a href="http://www.youtube.com/playlist?list=PL5B692fm6--vScfBaxgY89IRWFzDt0Khm" target="_blank">CUDACasts</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <div class="top">
+                            LEARN MORE
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="https://developer.nvidia.com/cuda-education-training">Training
+                                    and Courseware</a></li>
+                            <li>
+                                <a href="https://developer.nvidia.com/cuda-tools-ecosystem">Tools
+                                    and Ecosystem</a></li>
+                            <li><a href="https://developer.nvidia.com/academia">Academic
+                                    Collaboration</a></li>
+                            <li>
+                                <a href="http://docs.nvidia.com/cuda/index.html">Documentation</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="footer-section">
+                        <div class="top">
+                            GET INVOLVED
+                        </div>
+                        <ul>
+                            <li><a href="https://devtalk.nvidia.com/">Forums</a></li>
+                            <li>
+                                <a href="http://devblogs.nvidia.com/parallelforall/">Parallel
+                                    Forall Blog</a></li>
+                            <li>
+                                <a href="https://developer.nvidia.com/cuda-registered-developer-program">Developer
+                                    Program</a></li>
+                            <li><a href="https://developer.nvidia.com/contact">Contact
+                                    Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="footer-bottom">
+                    <div class="wrapper">
+                        Copyright © 2017 NVIDIA Corporation
+                        &nbsp; | &nbsp; <a href="http://www.nvidia.com/object/legal_info.html">Legal Information</a>
+                        &nbsp; | &nbsp; <a href="http://www.nvidia.com/object/privacy_policy.html">Privacy Policy</a>
+                        &nbsp; | &nbsp; <a href="https://developer.nvidia.com/contact">Support</a>
+                    </div>
+                </div>
+            </div>
+            
+
+
+    <div class="clear"></div>
+    <div id="csrf" data-key="X-CSRFTOKEN" data-token="298f5fb338cc93bad228be9c680c53bd87234af438f67a0ba8fcd99084425270"></div>
+
+            </div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+function RefreshTooltips()
+{
+	$(document).find('.tooltip').each(function() {
+		if ($(this).find('.tip').length > 0)
+			return true;
+			
+		var content = $(this).data('tooltip');
+		var position = $(this).data('tooltip-position');
+		var color = $(this).data('tooltip-color');
+		var tipWidth = $(this).data('tooltip-width');
+		var tipHeight = $(this).data('tooltip-height');
+		
+		if (content == '')
+			return;
+		
+		var parentHeight = $(this).height();
+		var parentWidth = $(this).outerWidth();		
+		if (!$(this).is(':visible'))
+		{
+			$clone = $(this).clone();
+			$clone.css({ top : 0, left: 0, position: 'absolute', display : 'block' });
+			$clone.detach();
+			$('body').append($clone);
+			parentHeight = $clone.height();
+			parentWidth = $clone.outerWidth();
+			$clone.remove();
+		}
+		
+		var tip = $('.tip-wrapper.template').clone();
+		if (tipWidth > 0)
+		{
+			$(tip).find('.tip').css({ width : tipWidth });
+			tipWidth+=10;
+		}
+			
+		if (tipHeight > 0)
+			$(tip).find('.tip').css({ height : tipHeight });
+			
+		$(tip).find('.tip').html(content);
+		
+		$('body').append(tip);
+		
+		if (!tipHeight)
+			tipHeight = $(tip).height();
+		if (!tipWidth)
+			tipWidth = $(tip).outerWidth();
+			
+		$(tip).detach();
+		tipHeight += 12;
+			
+		if (position == '' || position == undefined) //if the position is empty, let's do our best to figure out where it should go
+		{
+			//generate the tooltip so we can get the height
+			var offset = $(this).offset();
+			if (offset.top - tipHeight <=0)
+				position = 'bottom';
+			else
+				position = 'top';
+		}
+		
+		//console.log(parentWidth);
+		//console.log(tipWidth);
+		
+		var offset = (parentWidth > tipWidth  ? (parentWidth - tipWidth) / 2 - 6 : ((tipWidth - parentWidth) / 2 - 6)*-1);
+		
+		if (position == 'top')
+			$(tip).css({ 'top' : '-'+(tipHeight)+'px', 'left' : offset+'px' });
+		else
+			$(tip).css({ 'bottom': (-3 - tipHeight)+'px', 'left': offset+'px' });
+		
+		if (color == '' || color == undefined)
+			color = 'green';
+			
+		$(tip).removeClass('template').addClass(position+' '+color);
+		
+		$(this).append(tip);
+	});
+}
+
+$(document).ready(function() {
+	RefreshTooltips();
+});
+
+
+$(document).on('mouseover', '.tooltip:not(.click):not(.click-inactive)', function() {
+	$(this).find('.tip-wrapper').show();
+});
+
+$(document).on('mouseout', '.tooltip:not(.click):not(.click-inactive)', function() {
+	$(this).find('.tip-wrapper').hide();
+});
+
+$(document).on('click', '.tooltip.click .tip input, .tooltip.click .tip-content, .tooltip.click-inactive .tip input, .tooltip.click-inactive .tip-content', function(e) {
+	e.stopPropagation();
+});
+
+$(document).on('click', '.tooltip.click', function(e) {
+	if ($(this).find('.tip-wrapper').is(':visible'))
+		$(this).find('.tip-wrapper').hide();
+	else
+		$(this).find('.tip-wrapper').show();
+		
+});
+
+$(document).on('click', '.siteButton-wrapper.tooltip.click, .siteButton-wrapper.tooltip.click-inactive', function(e) {
+	e.stopPropagation();
+});
+
+$(document).on('click', 'body', function() {
+	$('.tip-wrapper').hide();
+});
+</script>
+
+<style type="text/css">
+.tooltip { position: relative; cursor: help; color: #bfd8f6; }
+.tip-wrapper { position: absolute; z-index: 9998; display: none; font-size: 13px; color: #e2e2e2; text-transform: none; }
+.tip-content { padding: 0px; position: relative; }
+.green .tip-content { background: url('/templates/default/images/forums/body.png') top left; }
+.tip { width: 300px; padding: 5px; text-shadow: none; text-align: center; }
+.tip input { width: 300px; }
+.green .tip { }
+</style>
+
+<div class="tip-wrapper template" style="display: none;">
+	<div class="tip-content">
+		<div class="tip">
+		</div>
+	</div>
+</div><style type="text/css">
+#authorize-modal { width: 300px; height: 190px; display: none; }
+#authorize-modal #redirect-url { display: none; }
+#authorize-modal .modal-content { height: 110px; }
+#authorize-modal .modal-content .tbl { margin: 0 auto; }
+#authorize-modal .modal-content .tbl th { padding: 0 5px 0 0; font-weight: normal; }
+#authorize-modal .modal-content .tbl div { margin: 5px 0; }
+
+#login-modal #redirect-url { display: none; }
+
+#login-modal .modal-content .tbl { margin: 0 auto; }
+#login-modal .modal-content .tbl th { padding: 0 5px 0 0; font-weight: normal; }
+#login-modal .modal-content .tbl div { margin: 5px 0; }
+#login-modal .modal-content .tbl div#recaptcha-modal { margin: 0; }
+#login-modal .modal-content .tbl div#recaptcha-modal div { margin: 0; }
+</style>
+
+<script type="text/javascript">
+		$(document).on('click', '.require-login', function() {
+		var href = $(this).attr('href');
+		AuthorizeModal('login', href);
+		return false;
+	});
+		
+	$(document).on('keydown', '#login-modal input[name=email]', function(e) {
+		var code = (e.keyCode ? e.keyCode : e.which);
+		if (code == 13)
+			$("#login-modal .siteButton#sign-in").click();
+	});
+	
+	$(document).on('keydown', '#login-modal input[name=password]', function(e) {
+		var code = (e.keyCode ? e.keyCode : e.which);
+		if (code == 13)
+			$("#login-modal .siteButton#sign-in").click();
+	});
+
+	</script>
+
+<script type="text/javascript">
+function AuthorizeModal(type, redirectURL)
+{
+	var modal;
+	
+	if (type == 'login')
+		modal = '#login-modal';
+	else
+		modal = '#authorize-modal';
+		
+	// if modal is open, close it
+	if ($.modal)
+        $.modal.close();	
+		
+	$(modal).modal({
+		escClose: false,
+		onShow: function(dialog) {
+			$("#simplemodal-container").css('height', 'auto');
+			//$.modal.update();
+		},
+		onClose: function(dialog) {
+			dialog.data.fadeOut('fast', function() {
+				dialog.container.fadeOut('slow');
+				dialog.overlay.fadeOut('fast', function() {
+					$.modal.close();
+				});
+			});
+		}
+	});
+	
+	// if we need a recaptcha, show it
+	if (0 >= 3)
+	{
+				
+				// need to show the recaptcha now
+			}
+	
+	$("#authorize-modal .redirect-url").html(redirectURL);
+}
+
+function Authorize(type)
+{
+	var url = '/ajax/account/login/';
+	var redirectURL = '';
+	$("#login-form .siteButton").addClass("inactive").addClass('waiting').find('a').html("<img src='/images/ajax-loader.gif' alt='please wait...' />");
+	if (redirectURL.length < 1)
+	{
+		redirectURL = $("#authorize-modal .redirect-url").html();
+	}
+	
+	var form = '';
+	
+	if (type == 'login')
+		form = '#login-form';
+	else
+		form = '#authorize-form';
+		
+
+
+    //$.post(url, $(form).serialize()+"&recaptcha_challenge_field="+Recaptcha.get_challenge(), function(data) {
+    $.post(url, $(form).serialize(), function(data) {
+		//Recaptcha.destroy();
+
+
+		if (data.error)
+		{
+			$("#login-form .siteButton").removeClass("inactive").removeClass('waiting').find('a').html('Log In');
+			alert(data.error);
+			if (data.recaptcha || 0 >= 3)
+			{
+
+												// need to show the recaptcha now
+							}
+		}
+		else
+		{
+			if (data.redirectUrl)
+				redirectURL = data.redirectUrl;
+			
+			$('.require-login').removeClass('require-login');
+			$.modal.close();
+			
+			if (data.user && data.user.type && redirectURL == '')
+				redirectURL = '/default/topic/922460/no-cuda-capable-device-is-detected/';
+			
+			if (redirectURL.length > 0)
+				window.location = redirectURL;
+			else
+				$('.account-controls').html('<span>Welcome <a href="/member/'+data.user.id+'/">'+data.user.username+'</a>!' + (data.user.title && data.user.title.length > 0 ? ' (' + data.user.title + ')' : '') + '</span> <span class="seperator">|</span> <span><a href="/member/'+data.user.id+'/">My Account</a></span> <span class="seperator">|</span> <span><a href="/cmd/account/logout/">Log Out</a></span>');
+				
+			$('.login-cover').fadeOut();
+		}
+	}, 'json');
+}
+</script>
+		
+
+<div id="authorize-modal" class="modal-wrapper widget widget-50" style="display: none;">
+	<div class="body modal-content">
+        <div class="header">
+            <p>Authorization Required</p>
+        </div>
+		<form id="authorize-form" action="/cmd/account/login/" method="post">
+			<table class="tbl">
+				<tbody><tr>
+					<th align="right">Email</th>
+					<td><div><input name="email" maxlength="255" type="text"></div></td>
+				</tr>
+				<tr>
+					<th align="right">Password</th>
+					<td><div><input name="password" maxlength="255" value="" autocomplete="off" type="password"></div></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><div class="siteButton" onclick="Authorize('authorize');"><a href="javascript:void(0);">Log In</a></div></td>
+				</tr>
+			</tbody></table>
+		</form>
+		<div class="redirect-url"></div>
+
+		<div class="siteButton right" onclick="window.location='/account/login/'"><a href="javascript:void(0)"><span>Close</span></a></div>
+
+    </div>
+	<div class="footer"></div>
+</div>
+
+<div id="login-modal" class="modal-wrapper widget widget-50" style="display: none;">
+
+	<div class="body modal-content right" style="padding: 8px;">
+        <div style="float: left; width: 100%; text-align: center; padding-top: 30px;">
+            <h1>Use Forum Credentials</h1>
+            <p style="font-size: 1.15em; font-weight: bold;">Not a member? <a href="https://devtalk.nvidia.com/account/register/?redirect=/default/topic/922460/no-cuda-capable-device-is-detected/">Register Now</a></p>
+		<form id="login-form" action="/cmd/account/login/" method="post">
+			<input name="redirect-url" id="redirect-url-input" value="" type="hidden">
+			<table class="tbl" style="margin-top: 6px;" width="70%">
+				<tbody><tr>
+					<td colspan="2" align="left">Email<br>
+					<div><input name="email" maxlength="254" type="text"></div>
+                    </td>
+				</tr>
+				<tr>
+					<td colspan="2" align="left">Password<br>
+					<div><input name="password" maxlength="128" value="" autocomplete="off" type="password"></div>
+				</td></tr>
+				<tr>
+                    <td colspan="2" align="center"><div id="recaptcha-modal" style="display:none;" class="g-recaptcha" data-sitekey="6Lfu4QsTAAAAAPP5uJQQtAautSAXFGHuWmFfvJSe"></div></td>
+                </tr>
+				<tr>
+					<td colspan="2" align="center"><div id="sign-in" class="siteButton" style="width: 100%;" onclick="Authorize('login');"><a href="javascript:void(0);">Sign In</a></div></td>
+				</tr>
+                <tr>
+                    <td width="50%" align="left"><div><input name="cookie_login" id="cookie_login" type="checkbox">&nbsp;&nbsp;<label for="cookie_login">Remember Me</label></div></td>
+					<td align="right"><a href="https://devtalk.nvidia.com/account/forgotpass/">Forgot Password?</a></td>
+				</tr>
+
+								<input name="X-CSRFTOKEN" id="X-CSRFTOKEN" value="298f5fb338cc93bad228be9c680c53bd87234af438f67a0ba8fcd99084425270" type="hidden">
+			</tbody></table>
+		</form>
+        </div>
+		<div class="redirect-url"></div>
+        <div class="siteButton inactive right" onclick="$.modal.close();"><a href="javascript:void(0)"><span>Close</span></a></div>
+
+	</div>
+	<div class="footer"></div>
+</div>
+
+
+
+
+
+    <!-- adobe tracking -->
+    <script type="text/javascript">try
+        { _satellite.pageBottom(); }
+
+        catch(err) {}</script>
+
+    
+<!-- Google Analytics Company -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="no%20CUDA-capable%20device%20is%20detected%20-%20NVIDIA%20Developer%20Forums_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1273456-57");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+<!-- Google Analytics CEVO -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39499397-3', 'nvidia.com');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- End of GA Code  -->
+
+
+
+<script type="text/javascript">
+    adroll_adv_id = "TK2TS7QRJVABHDEMF5O4K7";
+    adroll_pix_id = "YG7C6532EJECRHNNDT4TP7";
+    /* OPTIONAL: provide email to improve user identification */
+    /* adroll_email = "username@example.com"; */
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+            document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+</script>
+
+
+        
+
+    	
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"9557dbf16c","applicationID":"16871536","transactionName":"ZFADMkRTVxcEARdRWl0aIhNFRlYJSgYGXlRGWRVJYl1JDQZYWW5cVkI=","queueTime":0,"applicationTime":180,"atts":"SBcARAxJRBk=","errorBeacon":"bam.nr-data.net","agent":""}</script> 
+ <span class="simplecolorpicker picker "><span class="color" title="White" style="background-color: #efefef;" data-color="#efefef" data-selected="" role="button" tabindex="0"></span><span class="color" title="Gray" style="background-color: #999999;" data-color="#999999" role="button" tabindex="0"></span><span class="color" title="Green" style="background-color: #76b900;" data-color="#76b900" role="button" tabindex="0"></span><span class="color" title="Orange" style="background-color: darkOrange;" data-color="darkOrange" role="button" tabindex="0"></span></span><span class="simplecolorpicker picker "><span class="color" title="White" style="background-color: #efefef;" data-color="#efefef" data-selected="" role="button" tabindex="0"></span><span class="color" title="Gray" style="background-color: #999999;" data-color="#999999" role="button" tabindex="0"></span><span class="color" title="Green" style="background-color: #76b900;" data-color="#76b900" role="button" tabindex="0"></span><span class="color" title="Orange" style="background-color: darkOrange;" data-color="darkOrange" role="button" tabindex="0"></span></span><span class="simplefontsizepicker picker "><span class="size" title="Small" style="font-size: 11px;" data-size="11px" data-selected="" role="button" tabindex="0">A</span><span class="size" title="Normal" style="font-size: 13px;" data-size="13px" role="button" tabindex="0">A</span><span class="size" title="Medium" style="font-size: 15px;" data-size="15px" role="button" tabindex="0">A</span><span class="size" title="Large" style="font-size: 17px;" data-size="17px" role="button" tabindex="0">A</span><span class="size" title="Extra Large" style="font-size: 20px;" data-size="20px" role="button" tabindex="0">A</span></span><span class="simplefontsizepicker picker "><span class="size" title="Small" style="font-size: 11px;" data-size="11px" data-selected="" role="button" tabindex="0">A</span><span class="size" title="Normal" style="font-size: 13px;" data-size="13px" role="button" tabindex="0">A</span><span class="size" title="Medium" style="font-size: 15px;" data-size="15px" role="button" tabindex="0">A</span><span class="size" title="Large" style="font-size: 17px;" data-size="17px" role="button" tabindex="0">A</span><span class="size" title="Extra Large" style="font-size: 20px;" data-size="20px" role="button" tabindex="0">A</span></span></body></html>
+<!-- second: 0.1803 -->
